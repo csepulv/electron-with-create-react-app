@@ -1,1 +1,1 @@
-Sample Electron app with create-react-app
+bootstrap create-react-app and electron
