@@ -11,8 +11,20 @@ const tryConnection = () => client.connect({port: port}, () => {
         if(!startedElectron) {
             console.log('starting electron');
             startedElectron = true;
-            const exec = require('child_process').exec;
-            exec('npm run electron');
+            const spawn = require('child_process').spawn;
+            const runner = spawn('npm', ['run', 'electron']);
+
+            runner.stdout.on('data', function (data) {
+                console.log(data.toString());
+            });
+
+            runner.stderr.on('data', function (data) {
+                console.error(data.toString());
+            });
+
+            runner.on('exit', function (code) {
+                console.log('child process exited with code ' + code.toString());
+            });
         }
     }
 );
