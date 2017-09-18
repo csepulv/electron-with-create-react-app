@@ -26,7 +26,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 #### Special Thanks
 project setup - [Christian Sepulveda](https://github.com/csepulv)
-
 logging output - [marbemac](https://github.com/marbemac)
-
 packaging - [vicentedealencar](https://github.com/vicentedealencar)
