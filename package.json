@@ -1,5 +1,5 @@
 {
-  "name": "electron-with-create-react-app",
+  "name": "electron-react-app",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
@@ -14,11 +14,12 @@
   "homepage": "./",
   "main": "src/electron-starter.js",
   "scripts": {
-    "start": "react-scripts start",
+    "start": "nf start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "electron": "electron .",
-    "dev" : "nf start"
+    "electron-start": "node src/electron-wait-react",
+    "react-start": "react-scripts start"
   }
 }
