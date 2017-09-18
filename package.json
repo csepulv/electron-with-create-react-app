@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "electron": "^1.4.14",
+    "electron": "^1.7.6",
     "foreman": "^2.0.0",
-    "react-scripts": "0.8.5"
+    "react-scripts": "1.0.13"
   },
   "dependencies": {
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
   },
   "homepage": "./",
   "main": "src/electron-starter.js",
