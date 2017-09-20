@@ -1,24 +1,44 @@
 {
-  "name": "electron-with-create-react-app",
+  "name": "electron-react-app",
+  "productName": "Electron React Semantic UI App",
+  "description": "Boiler-Plate for an Electron React Semantic UI App",
   "version": "0.1.0",
   "private": true,
-  "devDependencies": {
-    "electron": "^1.4.14",
-    "foreman": "^2.0.0",
-    "react-scripts": "0.8.5"
-  },
-  "dependencies": {
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2"
-  },
+  "author": "1-14x0r<kara@openmastery.org",
+  "copyright": "© 2017, OpenMastery.org",
+  "license": "MIT",
   "homepage": "./",
   "main": "src/electron-starter.js",
   "scripts": {
-    "start": "react-scripts start",
+    "start": "nf start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
     "electron": "electron .",
-    "dev" : "nf start -p 3000"
+    "electron-start": "node src/electron-wait-react",
+    "react-start": "react-scripts start",
+    "release": "yarn build && electron-builder",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "build": {
+    "appId": "com.electron.electron-react-semantic-ui",
+    "asar": false,
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets",
+      "output": "release"
+    }
+  },
+  "devDependencies": {
+    "electron": "^1.7.6",
+    "foreman": "^2.0.0",
+    "react-scripts": "1.0.13",
+    "electron-builder": "^19.27.7"
+  },
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
   }
 }
