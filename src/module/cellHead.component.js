@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 class CellHead extends Component {
   render() {
+    let addLine;
     return (
       <thead>
         <tr>
@@ -10,7 +11,7 @@ class CellHead extends Component {
           <th>Libellé</th>
           <th>Moyen de paiement</th>
           <th>Règlement</th>
-          <th>+</th>
+          <th><a href='#' onClick={addLine}>+</a></th>
         </tr>
       </thead>
     );
