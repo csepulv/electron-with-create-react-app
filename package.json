@@ -8,8 +8,12 @@
     "react-scripts": "0.8.5"
   },
   "dependencies": {
+    "lodash": "^4.17.4",
     "react": "^16.1.1",
-    "react-dom": "^16.1.1"
+    "react-bootstrap": "^0.31.5",
+    "react-dom": "^16.1.1",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2"
   },
   "homepage": "./",
   "main": "src/electron-starter.js",
