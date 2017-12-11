@@ -4,10 +4,10 @@ import Table from 'react-bootstrap/lib/Table';
 import Cell from './cell.component';
 import CellHead from './cellHead.component';
 
-const List = ({row}) => (
+const List = ({ row, addLineAction, editLineAction }) => (
   <Table striped bordered condensed hover>
-    <CellHead />
-    <Cell row={row} />
+    <CellHead addLineAction={addLineAction} />
+    <Cell row={row} editLineAction={editLineAction} />
   </Table>
 );
 

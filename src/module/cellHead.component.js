@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 
 class CellHead extends Component {
+  addNewLine = () =>  {
+    this.props.addLineAction();
+  }
+
   render() {
-    let addLine;
     return (
       <thead>
         <tr>
@@ -11,7 +14,7 @@ class CellHead extends Component {
           <th>Libellé</th>
           <th>Moyen de paiement</th>
           <th>Règlement</th>
-          <th><a href='#' onClick={addLine}>+</a></th>
+          <th><a href='#' onClick={this.addNewLine}>+</a></th>
         </tr>
       </thead>
     );
