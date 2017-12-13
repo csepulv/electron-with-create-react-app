@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import moment from 'moment';
 import Modal from 'react-bootstrap/lib/Modal';
 import FormGroup from 'react-bootstrap/lib/FormGroup';
@@ -9,29 +11,12 @@ import Button from 'react-bootstrap/lib/Button';
 
 import _ from 'lodash';
 
-class EditCell extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { value: '' };
-  }
-
-  getValidationState() {
-    const length = this.state.value.length;
-    if (length > 10) return 'success';
-    else if (length > 5) return 'warning';
-    else if (length > 0) return 'error';
-    return null;
-  }
-
-  handleChange(e) {
-    // this.props.dispatch.editLineAction;
-    this.setState({ value: e.target.value });
-  }
-
+class EditRow extends Component {
   render() {
-    const { row } = this.props;
-    const currentDate = moment().format('L');
-    console.log('###',  row);
+    const { currentRow } = this.props;
+    const currentDate = moment().format('YYYY-MM-DD');
+    const defaultCheckedCard = currentRow.meansPayment === 'CB' ? this.state.chkbox = true: '' ;
+    const defaultCheckedPaper = currentRow.meansPayment === 'Chèque' ? this.state.chkbox = true: '' ;
     return (
       <div>
        <Modal.Header closeButton>
@@ -41,14 +26,22 @@ class EditCell extends Component {
          <form>
           <FormGroup
             controlId="formBasicText"
-            validationState={this.getValidationState()}
           >
             <ControlLabel>Date</ControlLabel>
             <FormControl
-              type="text"
-              value={this.state.value}
-              placeholder={currentDate}
-              onChange={this.handleChange}
+              type="date"
+              value={currentRow.date || currentDate}
+              onChange={() =>{}}
+            />
+          </FormGroup>
+          <FormGroup
+            controlId="formBasicText"
+          >
+            <ControlLabel>Date</ControlLabel>
+            <FormControl
+              type="date"
+              value={currentRow.name || ''}
+              onChange={() =>{}}
             />
           </FormGroup>
 
@@ -62,22 +55,21 @@ class EditCell extends Component {
           </FormGroup>
           <ControlLabel>Moyen de Paiment</ControlLabel>
           <FormGroup>
-            <Checkbox inline> CB </Checkbox>
-            <Checkbox inline>Chèque</Checkbox>
+            <Checkbox inline defaultChecked={defaultCheckedCard}>CB</Checkbox>
+            <Checkbox inline defaultChecked={defaultCheckedPaper}>Chèque</Checkbox>
           </FormGroup>
           <FormGroup
             controlId="formBasicText"
-            validationState={this.getValidationState()}
           >
             <ControlLabel>Règlement</ControlLabel>
             <FormControl
-              type="text"
-              value={this.state.value}
-              placeholder=""
-              onChange={this.handleChange}
+              type="number"
+              min="0"
+              value={ currentRow.payment || null }
+              onChange={() =>{}}
             />
           </FormGroup>
-          <Button type="submit"> Valider</Button>
+          <Button onClick={() => this.props.saveLine(this.props.currentRow)}>Valider</Button>
         </form>
        </Modal.Body>
      </div>
@@ -85,4 +77,9 @@ class EditCell extends Component {
   }
 };
 
-export default EditCell;
+
+EditRow.propTypes = {
+  currentRow: PropTypes.object.isRequired,
+};
+
+export default EditRow;
