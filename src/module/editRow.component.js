@@ -16,46 +16,31 @@ const currentDate = moment().format('YYYY-MM-DD');
 class EditRow extends Component {
   constructor(props) {
     super(props);
+    let row = props.currentRow;
+    if(_.isEmpty(props.currentRow)) {
+      row = {
+          date: moment().format('YYYY-MM-DD'),
+          name: '',
+          payment: '',
+        };
+    }
 
-    this.state = ({
-      currentRow : {
-        date: '',
-        name: '',
-        payment: '',
-      }
-    });
+    this.state = row;
   }
 
-  handleDateChange = event => {
-    event.preventDefault();
-    this.setState({
-      date: event.target.value
-    });
-  }
 
-  handleNameChange = event => {
+  handleInputChange = event => {
     event.preventDefault();
+    const {name, value}= event.target;
     this.setState({
-      name: event.target.value
-    });
-  }
-
-  handlePaymentChange = event => {
-    event.preventDefault();
-    this.setState({
-      payment: event.target.value
-    });
+      ...this.state,
+      [name]: value,
+    })
   }
 
   handleSubmit = () => {
-    //const { saveLineAction, currentRow, closeModalAction} = this.props;
-    //console.log('####', currentRow);
     const { addLineAction, closeModalAction} = this.props;
-    let currentRow = {
-      name: this.state.name,
-      date: this.state.date,
-      payment: this.state.payment
-    };
+    let currentRow = this.state;
     addLineAction(currentRow);
     closeModalAction();
   }
@@ -78,34 +63,36 @@ class EditRow extends Component {
             <FormControl
               type="date"
               name="date"
-              value={currentRow.date || currentDate}
-              onChange={this.handleDateChange}
+              value={this.state.date}
+              onChange={this.handleInputChange}
             />
           </FormGroup>
           <FormGroup
             controlId="formBasicText"
           >
             <ControlLabel>Patient</ControlLabel>
-            <input
+            <FormControl
               type="text"
               name="name"
-              value={this.state.name}
-              onChange={this.handleNameChange}
+              value={ this.state.name }
+              onChange={this.handleInputChange}
             />
           </FormGroup>
 
           <FormGroup controlId="formControlsSelect">
             <ControlLabel>Libellé</ControlLabel>
-            <FormControl componentClass="select" placeholder="select">
-              <option value="select">Enfants</option>
-              <option value="other">Adultes</option>
-              <option value="other">Couple</option>
+            <FormControl componentClass="select" placeholder="select" name="type" onChange={this.handleInputChange} value={this.state.libelle}>
+              <option value="Enfant">Enfants</option>
+              <option value="Adultes">Adultes</option>
+              <option value="Couple">Couple</option>
             </FormControl>
           </FormGroup>
           <ControlLabel>Moyen de Paiment</ControlLabel>
           <FormGroup>
-            <Checkbox inline defaultChecked={defaultCheckedCard}>CB</Checkbox>
-            <Checkbox inline defaultChecked={defaultCheckedPaper}>Chèque</Checkbox>
+            <FormControl componentClass="select" placeholder="select" name="meansPayment" onChange={this.handleInputChange} value={this.state.payment}>
+              <option value="Cheque">Chèque</option>
+              <option value="Liquide">Liquide</option>
+            </FormControl>
           </FormGroup>
           <FormGroup
             controlId="formBasicText"
@@ -116,7 +103,7 @@ class EditRow extends Component {
               min="0"
               name="payment"
               value={ this.state.payment }
-              onChange={this.handlePaymentChange}
+              onChange={this.handleInputChange}
             />
           </FormGroup>
           <Button onClick={this.handleSubmit}>Valider</Button>
