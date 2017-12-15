@@ -1,14 +1,16 @@
 import { connect } from 'react-redux'
 import List from './list.component';
-import { addLine } from '../redux/consultation/consultation.actions';
+import { closeModal } from '../redux/modal/modal.actions';
 
-const mapStateToProps = ({ consultation: { rows }  }) => ({ row:rows });
 
-const mapDispatchToProps = dispatch => ({
-  addLineAction: () => dispatch(addLine),
+const mapStateToProps = state => ({
+  modal: state.modal.modalOpen,
+  row: state.consultation.rows,
 });
 
-
+const mapDispatchToProps = dispatch => ({
+  closeModalAction: () => dispatch(closeModal),
+});
 const ListComponent = connect(mapStateToProps, mapDispatchToProps)(List);
 
 export default ListComponent;

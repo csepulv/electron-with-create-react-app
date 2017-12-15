@@ -10,11 +10,13 @@ export function consultation(state = initialState, action) {
   switch (action.type) {
     case 'LOAD_ROW':
       return {
+        ...state,
         rows: [...state.rows, ...action.rows]
       }
     case 'ADD_LINE':
       return {
-        rows: [...state.rows, {...action.row}]
+        ...state,
+        rows: [...state.rows, action.row]
       }
     case 'REMOVE_LINE':
       return {
@@ -28,7 +30,8 @@ export function consultation(state = initialState, action) {
       }
     case 'SAVE_LINE':
       return {
-      
+        ...state,
+        currentRow: action.currentRow
       }
     default:
       return state;
