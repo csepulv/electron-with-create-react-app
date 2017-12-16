@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import Home from './container/home.connector';
+
 import './App.css';
+import './bootstrap.css';
+import './bootstrap-theme.css';
+import './icons.css';
 
 class App extends Component {
   render() {
@@ -10,9 +15,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React/Electron</h2>
         </div>
-        <p className="App-intro">
-          Hello Electron!
-        </p>
+        <Home />
       </div>
     );
   }
