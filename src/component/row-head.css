@@ -1,0 +1,11 @@
+.row-head__container {
+  height: 40px;
+}
+
+.row-head__item {
+  text-align: center;
+}
+
+.row-head__container .row-head__item {
+  padding: 10px 0;
+}
