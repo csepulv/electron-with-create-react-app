@@ -1,38 +1,51 @@
-import _ from 'lodash';
+import { LOAD_CONSULTATIONS, CREATE_CONSULATION, DELETE_CONSULTATION, UPDATE_CONSULTATION} from './consultation.actions';
 
 const initialState = {
-  rows: [],
-  currentRow: {},
+  consultations: {},
+  lastId: 0,
 };
 
-// https://github.com/localForage/localForage
-export function consultation(state = initialState, action) {
+export default (state = initialState, action) => {
   switch (action.type) {
-    case 'LOAD_ROW':
-      return {
-        ...state,
-        rows: [...state.rows, ...action.rows]
+    case LOAD_CONSULTATIONS:
+      const { consultations } = action;
+
+      if (!consultations) {
+        return state;
       }
-    case 'ADD_LINE':
-      return {
-        ...state,
-        rows: [...state.rows, action.row]
-      }
-    case 'REMOVE_LINE':
-      return {
-        ...state,
-        rows: state.rows.filter(row => row.id !== action.id)
-      }
-    case 'EDIT_LINE':
-      return {
-        ...state,
-        currentRow: action.currentRow
-      }
-    case 'SAVE_LINE':
-      return {
-        ...state,
-        currentRow: action.currentRow
-      }
+
+      const lastId = Object.keys(consultations).sort((a, b) => a - b).slice(-1);
+
+      return { ...state, lastId, consultations: {...action.consultations} };
+
+    case CREATE_CONSULATION: {
+      const id = state.lastId + 1;
+      const { consultation } = action;
+      const consultations = { ...state.consultations };
+
+      consultations[id] = {id, ...consultation}
+
+      return { ...state, lastId: id, consultations};
+    }
+
+    case UPDATE_CONSULTATION: {
+      const { consultation } = action;
+      const consultations = { ...state.consultations };
+
+      consultations[consultation.id] = consultation;
+
+      return { ...state, consultations };
+    }
+
+    case DELETE_CONSULTATION: {
+      const { id } = action;
+      const consultations = { ...state.consultations };
+
+      delete consultations[id];
+    
+      return { ...state, consultations };
+    }
+
     default:
       return state;
   }

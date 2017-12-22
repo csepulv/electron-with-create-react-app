@@ -9,7 +9,7 @@ import thunk from 'redux-thunk';
 import reducer from './redux/reducer';
 import App from './App';
 
-import { saveState } from './redux/localStorage';
+import localStorage from './redux/middlewares/localStorage.middleware';
 
 import './index.css';
 
@@ -18,10 +18,8 @@ const reduxDebugger = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVT
 let store = createStore(
   reducer,
   reduxDebugger,
-  applyMiddleware(logger, thunk)
+  applyMiddleware(logger, thunk, localStorage)
 );
-
-store.subscribe(_.throttle(() => saveState(store.getState(), 5000)));
 
 ReactDOM.render(
   <Provider store={store}>
