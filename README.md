@@ -1,13 +1,18 @@
 #bootstrap create-react-app and electron
 
-Code repo for post on freeCodeCamp.
+## Env
+- node v7.x.x
+- yarn v1.x.x
 
-https://medium.freecodecamp.com/building-an-electron-application-with-create-react-app-97945861647c#.ze6c9qin1
+## Begin development
+Dev under electron :
+ - yarn dev
 
-There is another branch, [npm-start](https://github.com/csepulv/electron-with-create-react-app/tree/npm-start)
-It uses `npm-start` instead of `npm run dev`. (change submitted by [vcarl](https://github.com/vcarl)) Details are in this [pull request](https://github.com/csepulv/electron-with-create-react-app/pull/2)
+ Dev with redux tools :
+ - yarn run dev
 
-Thanks to [marbemac](https://github.com/marbemac) for submitting a pull request that captures logging output. It can be found in [logging-capture](https://github.com/csepulv/electron-with-create-react-app/tree/logging-capture)
+## Test Build
+- yarn-start
 
-Thanks to [vicentedealencar](https://github.com/vicentedealencar) for an example of using [electron-builder](https://github.com/electron-userland/electron-builder) for packaging. Details are [here](https://github.com/vicentedealencar/electron-with-create-react-app/commit/f1729381d588e65ac140ce5a08cc6277babd9641).
-
+## Build
+- yarn build
