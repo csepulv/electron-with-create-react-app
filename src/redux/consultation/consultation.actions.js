@@ -19,6 +19,6 @@ export const updateConsultation = consultation => ({
 
 export const DELETE_CONSULTATION = 'DELETE_CONSULTATION';
 export const deleteConsultation = id => ({
-    type: DELETE_CONSULATION,
+    type: DELETE_CONSULTATION,
     id,
 });

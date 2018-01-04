@@ -9,7 +9,7 @@ export const consultations = localforage.createInstance({
 export default store => next => action => {
   switch (action.type) {
     case CREATE_CONSULATION:
-    case DELETE_CONSULATION:
+    case DELETE_CONSULTATION:
     case UPDATE_CONSULTATION: {
       next(action);
 
