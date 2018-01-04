@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import List from './list.connector';
+import './home-container.css';
 
 class Home extends Component {
   componentDidMount() {
@@ -8,7 +9,11 @@ class Home extends Component {
   }
 
   render() {
-    return <List />;
+    return (
+      <div className="home-container">
+        <List />
+      </div>
+    );
   }
 }
 
