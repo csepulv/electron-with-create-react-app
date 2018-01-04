@@ -4,7 +4,7 @@ import List from './list.connector';
 
 class Home extends Component {
   componentDidMount() {
-    this.props.loadRows();
+    this.props.loadConsultationsAction();
   }
 
   render() {
@@ -15,7 +15,7 @@ class Home extends Component {
 };
 
 Home.propTypes = {
-  loadRows: PropTypes.func.isRequired,
+  loadConsultationsAction: PropTypes.func.isRequired,
 };
 
 export default Home;

@@ -16,39 +16,51 @@ const currentDate = moment().format('YYYY-MM-DD');
 class EditRow extends Component {
   constructor(props) {
     super(props);
-    let row = props.currentRow;
-    if(_.isEmpty(props.currentRow)) {
-      row = {
-          date: moment().format('YYYY-MM-DD'),
-          name: '',
-          payment: '',
-        };
-    }
+    
+    let { consultation } = this.props;
 
-    this.state = row;
+    if (!consultation.id) {
+      consultation = {
+        date: moment().format('YYYY-MM-DD'),
+        name: '',
+        payment: '',
+      };
+    }   
+
+    this.state = { consultation };
   }
-
 
   handleInputChange = event => {
     event.preventDefault();
-    const {name, value}= event.target;
-    this.setState({
-      ...this.state,
-      [name]: value,
-    })
+    const { name, value } = event.target;
+
+    const { consultation } = this.state;
+
+    consultation[name] = value;
+
+    this.setState({ consultation });
   }
 
   handleSubmit = () => {
-    const { addLineAction, closeModalAction} = this.props;
-    let currentRow = this.state;
-    addLineAction(currentRow);
-    closeModalAction();
+    const { createConsultationAction, updateConsultationAction, toggleModal} = this.props;
+    const { consultation } = this.state;
+
+    if (consultation.id) {
+      updateConsultationAction(consultation);
+      toggleModal();  
+
+      return;
+    }
+
+    createConsultationAction(consultation);
+    toggleModal();
   }
 
   render() {
-    const { currentRow } = this.props;
+    const { consultation } = this.state;
     const defaultCheckedCard = {}; //currentRow.meansPayment === 'CB' ? this.state.chkbox = true: '' ;
     const defaultCheckedPaper = {}; //currentRow.meansPayment === 'Chèque' ? this.state.chkbox = true: '' ;
+
     return (
       <div>
        <Modal.Header closeButton>
@@ -63,7 +75,7 @@ class EditRow extends Component {
             <FormControl
               type="date"
               name="date"
-              value={this.state.date}
+              value={consultation.date}
               onChange={this.handleInputChange}
             />
           </FormGroup>
@@ -74,14 +86,14 @@ class EditRow extends Component {
             <FormControl
               type="text"
               name="name"
-              value={ this.state.name }
+              value={ consultation.name }
               onChange={this.handleInputChange}
             />
           </FormGroup>
 
           <FormGroup controlId="formControlsSelect">
             <ControlLabel>Libellé</ControlLabel>
-            <FormControl componentClass="select" placeholder="select" name="type" onChange={this.handleInputChange} value={this.state.libelle}>
+            <FormControl componentClass="select" placeholder="select" name="type" onChange={this.handleInputChange} value={consultation.libelle}>
               <option value="Enfant">Enfants</option>
               <option value="Adultes">Adultes</option>
               <option value="Couple">Couple</option>
@@ -89,7 +101,7 @@ class EditRow extends Component {
           </FormGroup>
           <ControlLabel>Moyen de Paiment</ControlLabel>
           <FormGroup>
-            <FormControl componentClass="select" placeholder="select" name="meansPayment" onChange={this.handleInputChange} value={this.state.payment}>
+            <FormControl componentClass="select" placeholder="select" name="meansPayment" onChange={this.handleInputChange} value={consultation.payment}>
               <option value="Cheque">Chèque</option>
               <option value="Liquide">Liquide</option>
             </FormControl>
@@ -102,7 +114,7 @@ class EditRow extends Component {
               type="number"
               min="0"
               name="payment"
-              value={ this.state.payment }
+              value={ consultation.payment }
               onChange={this.handleInputChange}
             />
           </FormGroup>
@@ -114,11 +126,19 @@ class EditRow extends Component {
   }
 };
 
+EditRow.defaultProps = {
+  consultation: {
+    date: moment().format('YYYY-MM-DD'),
+    name: '',
+    payment: '',
+  }
+};
 
 EditRow.propTypes = {
-  currentRow: PropTypes.object.isRequired,
-  addLineAction: PropTypes.func.isRequired,
-  closeModalAction: PropTypes.func.isRequired,
+  toggleModal: PropTypes.func.isRequired,
+  createConsultationAction: PropTypes.func.isRequired,
+  updateConsultationAction: PropTypes.func.isRequired,
+  consultation: PropTypes.object,
 };
 
 export default EditRow;
