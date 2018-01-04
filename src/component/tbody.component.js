@@ -20,14 +20,14 @@ class Tbody extends Component {
         <td>{consultation.meansPayment}</td>
         <td>{consultation.payment}</td>
         <td>
-          <a href="#" onClick={() => this.props.editConsultation(consultation.id)}>
+          <button onClick={() => this.props.editConsultation(consultation.id)}>
             <img className="icons" src={Edit} alt="edit" />
-          </a>
+          </button>
         </td>
         <td>
-          <a href="#" onClick={() => this.props.deleteConsultationAction(consultation.id)}>
+          <button onClick={() => this.props.deleteConsultationAction(consultation.id)}>
             <img className="icons" src={Remove} alt="remove" />
-          </a>
+          </button>
         </td>
       </tr>
     );
@@ -41,6 +41,7 @@ class Tbody extends Component {
 }
 
 Tbody.propTypes = {
+  // eslint-disable-next-line
   consultations: PropTypes.object.isRequired,
   editConsultation: PropTypes.func.isRequired,
   deleteConsultationAction: PropTypes.func.isRequired,

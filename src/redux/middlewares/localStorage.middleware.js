@@ -1,11 +1,10 @@
+import localforage from 'localforage';
 import {
   CREATE_CONSULATION,
   DELETE_CONSULTATION,
   UPDATE_CONSULTATION,
   LOAD_CONSULTATIONS,
 } from '../consultation/consultation.actions';
-
-import localforage from 'localforage';
 
 export const consultations = localforage.createInstance({
   name: 'consultations',
@@ -25,6 +24,7 @@ export default store => next => action => {
     }
     case LOAD_CONSULTATIONS: {
       consultations.getItem('consultations').then(value => {
+        // eslint-disable-next-line
         action.consultations = value;
         next(action);
       });

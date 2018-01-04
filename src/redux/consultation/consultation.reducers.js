@@ -1,3 +1,4 @@
+/* eslint-disable */
 import {
   LOAD_CONSULTATIONS,
   CREATE_CONSULATION,

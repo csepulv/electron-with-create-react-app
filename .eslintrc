@@ -3,6 +3,10 @@
     "plugins": [
       "m6web-tools"
     ],
+    "parser": "babel-eslint",
+    "rules": {
+      "strict": 0
+    },
     "env": {
       "browser": true,
       "jasmine": true
