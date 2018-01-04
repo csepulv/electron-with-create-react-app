@@ -6,7 +6,7 @@ import Tbody from '../component/tbody.connector';
 import Thead from '../component/thead.component';
 
 import Modal from 'react-bootstrap/lib/Modal';
-import EditRow from '../module/editRow.connector'
+import EditRow from '../module/editRow.connector';
 
 class List extends Component {
   constructor(props) {
@@ -15,15 +15,15 @@ class List extends Component {
     this.state = {
       modalOpen: false,
       modalContent: {},
-    }
+    };
   }
 
   toggleModal = () => {
     this.setState({
       modalOpen: !this.state.modalOpen,
       modalContent: {},
-    })
-  }
+    });
+  };
 
   createConsultation = () => {
     this.setState({
@@ -37,7 +37,7 @@ class List extends Component {
       modalOpen: !this.state.modalOpen,
       modalContent: this.props.consultations[id],
     });
-  }
+  };
 
   render() {
     const { consultations } = this.props;
@@ -49,15 +49,14 @@ class List extends Component {
           <Thead createConsultation={this.createConsultation} />
           <Tbody consultations={consultations} editConsultation={this.editConsultation} />
         </Table>
-        
+
         <Modal show={modalOpen} onHide={this.toggleModal}>
-          { modalOpen && <EditRow consultation={modalContent} toggleModal={this.toggleModal} /> }
+          {modalOpen && <EditRow consultation={modalContent} toggleModal={this.toggleModal} />}
         </Modal>
-     </div>
+      </div>
     );
   }
-};
-
+}
 
 List.propTypes = {
   consultations: PropTypes.object.isRequired,

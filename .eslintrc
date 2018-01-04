@@ -1,0 +1,10 @@
+  {
+    "extends": "plugin:m6web-tools/m6web",
+    "plugins": [
+      "m6web-tools"
+    ],
+    "env": {
+      "browser": true,
+      "jasmine": true
+    }
+  }
