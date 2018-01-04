@@ -1,4 +1,9 @@
-import { LOAD_CONSULTATIONS, CREATE_CONSULATION, DELETE_CONSULTATION, UPDATE_CONSULTATION} from './consultation.actions';
+import {
+  LOAD_CONSULTATIONS,
+  CREATE_CONSULATION,
+  DELETE_CONSULTATION,
+  UPDATE_CONSULTATION,
+} from './consultation.actions';
 
 const initialState = {
   consultations: {},
@@ -14,18 +19,20 @@ export default (state = initialState, action) => {
         return state;
       }
 
-      const lastId = Object.keys(consultations).sort((a, b) => a - b).slice(-1);
+      const lastId = Object.keys(consultations)
+        .sort((a, b) => a - b)
+        .slice(-1);
 
-      return { ...state, lastId, consultations: {...action.consultations} };
+      return { ...state, lastId, consultations: { ...action.consultations } };
 
     case CREATE_CONSULATION: {
       const id = state.lastId + 1;
       const { consultation } = action;
       const consultations = { ...state.consultations };
 
-      consultations[id] = {id, ...consultation}
+      consultations[id] = { id, ...consultation };
 
-      return { ...state, lastId: id, consultations};
+      return { ...state, lastId: id, consultations };
     }
 
     case UPDATE_CONSULTATION: {
@@ -42,7 +49,7 @@ export default (state = initialState, action) => {
       const consultations = { ...state.consultations };
 
       delete consultations[id];
-    
+
       return { ...state, consultations };
     }
 

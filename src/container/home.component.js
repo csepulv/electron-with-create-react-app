@@ -8,11 +8,9 @@ class Home extends Component {
   }
 
   render() {
-    return (
-      <List/>
-    );
+    return <List />;
   }
-};
+}
 
 Home.propTypes = {
   loadConsultationsAction: PropTypes.func.isRequired,

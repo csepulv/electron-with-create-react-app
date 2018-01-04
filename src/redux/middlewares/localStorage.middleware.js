@@ -1,9 +1,14 @@
-import { CREATE_CONSULATION, DELETE_CONSULTATION, UPDATE_CONSULTATION, LOAD_CONSULTATIONS } from '../consultation/consultation.actions';
+import {
+  CREATE_CONSULATION,
+  DELETE_CONSULTATION,
+  UPDATE_CONSULTATION,
+  LOAD_CONSULTATIONS,
+} from '../consultation/consultation.actions';
 
 import localforage from 'localforage';
 
 export const consultations = localforage.createInstance({
-  name: 'consultations'
+  name: 'consultations',
 });
 
 export default store => next => action => {

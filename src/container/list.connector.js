@@ -1,4 +1,4 @@
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import List from './list.component';
 
 const mapStateToProps = state => ({

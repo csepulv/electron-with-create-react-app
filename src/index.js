@@ -15,15 +15,11 @@ import './index.css';
 
 const reduxDebugger = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
-let store = createStore(
-  reducer,
-  reduxDebugger,
-  applyMiddleware(logger, thunk, localStorage)
-);
+let store = createStore(reducer, reduxDebugger, applyMiddleware(logger, thunk, localStorage));
 
 ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
