@@ -13,9 +13,9 @@ const Thead = ({ createConsultation }) => (
       <th className="row-head__item">Moyen de paiement</th>
       <th className="row-head__item">Règlement</th>
       <th className="row-head__item" colSpan="2">
-        <a href="#" onClick={createConsultation}>
+        <button onClick={createConsultation}>
           <img className="icons" src={More} alt="Add" />
-        </a>
+        </button>
       </th>
     </tr>
   </thead>

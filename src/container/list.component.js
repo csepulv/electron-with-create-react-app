@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Modal from 'react-bootstrap/lib/Modal';
 
 import Table from 'react-bootstrap/lib/Table';
 import Tbody from '../component/tbody.connector';
 import Thead from '../component/thead.component';
-
-import Modal from 'react-bootstrap/lib/Modal';
 import EditRow from '../module/editRow.connector';
 
 class List extends Component {
@@ -59,8 +58,8 @@ class List extends Component {
 }
 
 List.propTypes = {
+  // eslint-disable-next-line
   consultations: PropTypes.object.isRequired,
-  modal: PropTypes.bool,
 };
 
 export default List;

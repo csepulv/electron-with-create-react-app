@@ -14,9 +14,11 @@
     "react-scripts": "1.0.17"
   },
   "dependencies": {
+    "babel-eslint": "^8.1.2",
     "localforage": "^1.5.5",
     "lodash": "^4.17.4",
     "moment": "^2.19.4",
+    "prop-types": "^15.6.0",
     "react": "^16.1.1",
     "react-bootstrap": "^0.31.5",
     "react-dom": "^16.1.1",
