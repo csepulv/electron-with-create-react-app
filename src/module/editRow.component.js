@@ -18,7 +18,7 @@ class EditRow extends Component {
       consultation = {
         date: moment().format('YYYY-MM-DD'),
         name: '',
-        payment: '',
+        payment: '0',
       };
     }
 
