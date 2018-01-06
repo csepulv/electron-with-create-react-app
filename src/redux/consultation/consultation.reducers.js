@@ -12,15 +12,25 @@ const initialState = {
   lastId: 0,
   benefit: {
     overall: 0,
+    taxableBenefit: 0,
   },
 };
+
+export const sum = (accumulator, currentValue) => accumulator + _.parseInt(currentValue);
 
 const getOverallBenefit = consultations => {
   // bénéfice global
   const getBenefit = _.map(consultations, 'payment');
-  const reducer = (accumulator, currentValue) => accumulator + _.parseInt(currentValue);
 
-  return getBenefit.reduce(reducer, 0);
+  return getBenefit.reduce(sum, 0);
+};
+
+const getTaxableBenefit = consultations => {
+  // bénéfice imposable
+  const filterTaxableBenefit = _.filter(consultations, { meansPayment: 'Cheque' });
+  const getTaxableBenefit = _.map(filterTaxableBenefit, 'payment');
+
+  return getTaxableBenefit.reduce(sum, 0);
 };
 
 export default (state = initialState, action) => {
@@ -42,6 +52,7 @@ export default (state = initialState, action) => {
         consultations: { ...action.consultations },
         benefit: {
           overall: getOverallBenefit(action.consultations),
+          taxableBenefit: getTaxableBenefit(action.consultations),
         },
       };
     }
@@ -58,6 +69,7 @@ export default (state = initialState, action) => {
         consultations,
         benefit: {
           overall: getOverallBenefit(consultations),
+          taxableBenefit: getTaxableBenefit(consultations),
         },
       };
     }
@@ -73,6 +85,7 @@ export default (state = initialState, action) => {
         consultations,
         benefit: {
           overall: getOverallBenefit(consultations),
+          taxableBenefit: getTaxableBenefit(consultations),
         },
       };
     }
@@ -88,6 +101,7 @@ export default (state = initialState, action) => {
         consultations,
         benefit: {
           overall: getOverallBenefit(consultations),
+          taxableBenefit: getTaxableBenefit(consultations),
         },
       };
     }

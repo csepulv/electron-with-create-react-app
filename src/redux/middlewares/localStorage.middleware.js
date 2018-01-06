@@ -6,8 +6,14 @@ import {
   LOAD_CONSULTATIONS,
 } from '../consultation/consultation.actions';
 
+import { CREATE_IMPOSED, LOAD_IMPOSED } from '../imposed/imposed.actions';
+
 export const consultations = localforage.createInstance({
   name: 'consultations',
+});
+
+export const imposed = localforage.createInstance({
+  name: 'imposed',
 });
 
 export default store => next => action => {
@@ -31,6 +37,24 @@ export default store => next => action => {
 
       break;
     }
+    case CREATE_IMPOSED: {
+      next(action);
+
+      const { getState } = store;
+
+      consultations.setItem('imposed', getState().imposed);
+      break;
+    }
+    case LOAD_IMPOSED: {
+      imposed.getItem('imposed').then(value => {
+        // eslint-disable-next-line
+        action.imposed = value;
+        next(action);
+      });
+
+      break;
+    }
+
     default:
       next(action);
 

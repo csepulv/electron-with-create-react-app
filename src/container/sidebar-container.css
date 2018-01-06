@@ -1,8 +1,8 @@
 .sidebar-container {
   position: relative;
   width: 350px;
+  height: calc(100vh - 150px);
   margin-right: 40px;
-
   transition: all 0.3s ease;
   background-color: #eaeaea;
 }

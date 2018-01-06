@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-
 import classname from 'classnames';
+
+import SideBarBenefit from '../module/sideBarBenefit.connector';
+import SideBarImposed from '../module/sideBarImposed.connector';
 
 import './sidebar-container.css';
 import './sidebar.css';
-import './benefit.css';
 
 class SideBar extends Component {
   constructor(props) {
@@ -23,7 +23,6 @@ class SideBar extends Component {
   };
 
   render() {
-    const { overallBenefit } = this.props;
     const { sidebarOpen } = this.state;
     const sidebarClasses = classname('sidebar-container', {
       'sidebar-container--closed': sidebarOpen,
@@ -32,23 +31,14 @@ class SideBar extends Component {
     return (
       <div className={sidebarClasses}>
         <div className="sidebar__content">
-          <h1 className="sidebar__content-title">Mon Compte</h1>
-          <div className="sidebar__content-benefit">
-            <div className="benefit-card">
-              <span className="benefit-card__symbol">€</span>
-              <span className="benefit-card__number">{overallBenefit}</span>
-              <p className="benefit-card__info">Bénéfice total</p>
-            </div>
-          </div>
+          <SideBarBenefit />
+          <SideBarImposed />
+          <div className="sidebar__content-border-bottom" />
         </div>
-        <div className="sidebar__button" onClick={this.toggleSidebar} />
+        <button className="sidebar__button" onClick={this.toggleSidebar} />
       </div>
     );
   }
 }
-
-SideBar.propTypes = {
-  overallBenefit: PropTypes.number,
-};
 
 export default SideBar;

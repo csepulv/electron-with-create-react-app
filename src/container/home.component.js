@@ -6,6 +6,7 @@ import './home-container.css';
 class Home extends Component {
   componentDidMount() {
     this.props.loadConsultationsAction();
+    this.props.loadImposedActions();
   }
 
   render() {
@@ -19,6 +20,7 @@ class Home extends Component {
 
 Home.propTypes = {
   loadConsultationsAction: PropTypes.func.isRequired,
+  loadImposedActions: PropTypes.func.isRequired,
 };
 
 export default Home;

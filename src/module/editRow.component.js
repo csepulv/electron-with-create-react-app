@@ -19,6 +19,7 @@ class EditRow extends Component {
         date: moment().format('YYYY-MM-DD'),
         name: '',
         payment: '0',
+        meansPayment: 'Cheque',
       };
     }
 

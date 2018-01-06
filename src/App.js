@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import Home from './container/home.connector';
-import SideBar from './container/sideBar.connector';
+import SideBar from './container/sideBar.component';
 
 import './App.css';
 import './bootstrap.css';
