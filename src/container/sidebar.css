@@ -21,6 +21,8 @@
 
   text-align: center;
   padding: 10px 20px;
+
+  overflow: auto;
 }
 
 .sidebar__content-border-bottom {

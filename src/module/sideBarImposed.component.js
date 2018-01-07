@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import FormGroup from 'react-bootstrap/lib/FormGroup';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
-import Button from 'react-bootstrap/lib/Button';
 
 class SideBarImposed extends Component {
   constructor(props) {
@@ -45,43 +44,23 @@ class SideBarImposed extends Component {
 
     return (
       <div>
-        <h1 className="sidebar__content-title">Mes Charges</h1>
+        <h1 className="sidebar__content-title">Mes Charges Fiscales</h1>
         <div className="sidebar__content-form">
-          <FormGroup controlId="formBasicText">
-            <ControlLabel>Cotisation Sociale</ControlLabel>
+          <FormGroup controlId="formBasicText" className="form-sidebar">
+            <ControlLabel className="form-label">Cotisation Sociale</ControlLabel>
             <FormControl
               type="number"
               min="0"
               name="bothTaxation"
+              className="form-input"
               value={imposed.bothTaxation}
               onChange={this.handleInputChange}
             />
           </FormGroup>
-          <FormGroup controlId="formBasicText">
-            <ControlLabel>Cotisation CFP</ControlLabel>
-            <FormControl
-              type="number"
-              min="0"
-              name="contribution"
-              value={imposed.contribution}
-              onChange={this.handleInputChange}
-            />
-          </FormGroup>
-          <Button onClick={this.handleSubmit}>Valider</Button>
-        </div>
-
-        <div className="sidebar__content-imposed">
-          <div className="imposed-card">
-            <span className="imposed-card__symbol">€</span>
-            <span className="imposed-card__number">bolo</span>
-            <p className="imposed-card__info">Bénéfice Imposable</p>
-          </div>
-
-          <div className="imposed-card">
-            <span className="imposed-card__symbol">€</span>
-            <span className="imposed-card__number">gnaise</span>
-            <p className="imposed-card__info">Bénéfice total</p>
-          </div>
+          <p>{imposed.contribution}</p>
+          <button className="form-button" onClick={this.handleSubmit}>
+            Valider
+          </button>
         </div>
       </div>
     );

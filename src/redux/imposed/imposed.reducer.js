@@ -1,9 +1,7 @@
 /* eslint-disable */
-import { LOAD_IMPOSED, CREATE_IMPOSED } from './imposed.actions';
+import { LOAD_IMPOSED, CREATE_IMPOSED, CREATE_RESPONSABILITY } from './imposed.actions';
 
-const initialState = {
-  imposed: {},
-};
+const initialState = {};
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -12,17 +10,25 @@ export default (state = initialState, action) => {
 
       return {
         ...state,
-        imposed: { ...action.imposed },
+        ...action.imposed,
       };
     }
 
     case CREATE_IMPOSED: {
-      const { imposed } = action.imposed;
-      console.log('####', action, '==>', action.imposed, '==>+', ...state);
+      const { imposed } = action;
 
       return {
         ...state,
-        imposed,
+        fiscal: imposed,
+      };
+    }
+
+    case CREATE_RESPONSABILITY: {
+      const { responsability } = action;
+
+      return {
+        ...state,
+        charge: responsability,
       };
     }
 

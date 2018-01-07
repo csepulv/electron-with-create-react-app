@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import classname from 'classnames';
 
-import SideBarBenefit from '../module/sideBarBenefit.connector';
-import SideBarImposed from '../module/sideBarImposed.connector';
+import SideBarCharge from './sideBarCharge.connector';
 
 import './sidebar-container.css';
 import './sidebar.css';
@@ -31,8 +30,7 @@ class SideBar extends Component {
     return (
       <div className={sidebarClasses}>
         <div className="sidebar__content">
-          <SideBarBenefit />
-          <SideBarImposed />
+          <SideBarCharge />
           <div className="sidebar__content-border-bottom" />
         </div>
         <button className="sidebar__button" onClick={this.toggleSidebar} />

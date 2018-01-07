@@ -6,7 +6,7 @@ import {
   LOAD_CONSULTATIONS,
 } from '../consultation/consultation.actions';
 
-import { CREATE_IMPOSED, LOAD_IMPOSED } from '../imposed/imposed.actions';
+import { CREATE_IMPOSED, CREATE_RESPONSABILITY, LOAD_IMPOSED } from '../imposed/imposed.actions';
 
 export const consultations = localforage.createInstance({
   name: 'consultations',
@@ -37,12 +37,13 @@ export default store => next => action => {
 
       break;
     }
+    case CREATE_RESPONSABILITY:
     case CREATE_IMPOSED: {
       next(action);
 
       const { getState } = store;
 
-      consultations.setItem('imposed', getState().imposed);
+      imposed.setItem('imposed', getState().imposed);
       break;
     }
     case LOAD_IMPOSED: {
