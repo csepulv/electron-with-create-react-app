@@ -1,0 +1,41 @@
+.sidebar__button {
+  position: absolute;
+  top: 0;
+  right: -20px;
+
+  width: 20px;
+  height: 100%;
+
+  background-color: #d2d0d0;
+  transition: all 1s ease;
+  cursor: pointer;
+}
+
+.sidebar__button:hover {
+  background-color: #9f8f75;
+}
+
+.sidebar__content {
+  flex: 1;
+  height: calc(100vh - 150px);
+
+  text-align: center;
+  padding: 10px 20px;
+
+  overflow: auto;
+}
+
+.sidebar__content-border-bottom {
+  border-bottom: 2px solid #9f8f75;
+}
+
+.sidebar__content-title {
+  color: #9f8f75;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #9f8f75;
+  font-weight: lighter;
+}
+
+.sidebar__content-benefit {
+  margin: 50px 0;
+}

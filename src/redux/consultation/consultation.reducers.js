@@ -1,3 +1,4 @@
+import _ from 'lodash';
 /* eslint-disable */
 import {
   LOAD_CONSULTATIONS,
@@ -9,11 +10,32 @@ import {
 const initialState = {
   consultations: {},
   lastId: 0,
+  benefit: {
+    overall: 0,
+    taxableBenefit: 0,
+  },
+};
+
+export const sum = (accumulator, currentValue) => accumulator + _.parseInt(currentValue);
+
+const getOverallBenefit = consultations => {
+  // bénéfice global
+  const getBenefit = _.map(consultations, 'payment');
+
+  return getBenefit.reduce(sum, 0);
+};
+
+const getTaxableBenefit = consultations => {
+  // bénéfice imposable
+  const filterTaxableBenefit = _.filter(consultations, { meansPayment: 'Cheque' });
+  const getTaxableBenefit = _.map(filterTaxableBenefit, 'payment');
+
+  return getTaxableBenefit.reduce(sum, 0);
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case LOAD_CONSULTATIONS:
+    case LOAD_CONSULTATIONS: {
       const { consultations } = action;
 
       if (!consultations) {
@@ -24,8 +46,16 @@ export default (state = initialState, action) => {
         .sort((a, b) => a - b)
         .slice(-1);
 
-      return { ...state, lastId, consultations: { ...action.consultations } };
-
+      return {
+        ...state,
+        lastId,
+        consultations: { ...action.consultations },
+        benefit: {
+          overall: getOverallBenefit(action.consultations),
+          taxableBenefit: getTaxableBenefit(action.consultations),
+        },
+      };
+    }
     case CREATE_CONSULATION: {
       const id = state.lastId + 1;
       const { consultation } = action;
@@ -33,7 +63,15 @@ export default (state = initialState, action) => {
 
       consultations[id] = { id, ...consultation };
 
-      return { ...state, lastId: id, consultations };
+      return {
+        ...state,
+        lastId: id,
+        consultations,
+        benefit: {
+          overall: getOverallBenefit(consultations),
+          taxableBenefit: getTaxableBenefit(consultations),
+        },
+      };
     }
 
     case UPDATE_CONSULTATION: {
@@ -42,7 +80,14 @@ export default (state = initialState, action) => {
 
       consultations[consultation.id] = consultation;
 
-      return { ...state, consultations };
+      return {
+        ...state,
+        consultations,
+        benefit: {
+          overall: getOverallBenefit(consultations),
+          taxableBenefit: getTaxableBenefit(consultations),
+        },
+      };
     }
 
     case DELETE_CONSULTATION: {
@@ -51,7 +96,14 @@ export default (state = initialState, action) => {
 
       delete consultations[id];
 
-      return { ...state, consultations };
+      return {
+        ...state,
+        consultations,
+        benefit: {
+          overall: getOverallBenefit(consultations),
+          taxableBenefit: getTaxableBenefit(consultations),
+        },
+      };
     }
 
     default:

@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "babel-eslint": "^8.1.2",
+    "classnames": "^2.2.5",
     "localforage": "^1.5.5",
     "lodash": "^4.17.4",
     "moment": "^2.19.4",

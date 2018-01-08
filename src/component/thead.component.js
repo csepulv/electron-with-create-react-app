@@ -9,7 +9,7 @@ const Thead = ({ createConsultation }) => (
     <tr className="row-head__container">
       <th className="row-head__item">Date</th>
       <th className="row-head__item">Patient</th>
-      <th className="row-head__item">Libellé</th>
+      <th className="row-head__item">Consulation</th>
       <th className="row-head__item">Moyen de paiement</th>
       <th className="row-head__item">Règlement</th>
       <th className="row-head__item" colSpan="2">

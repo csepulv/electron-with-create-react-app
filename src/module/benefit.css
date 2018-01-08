@@ -1,0 +1,35 @@
+.benefit-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  margin: 20px auto;
+  padding: 10px 10px 0;
+
+  background-color: #9f8f75;
+}
+
+.benefit-card__symbol {
+  position: absolute;
+  top: 0;
+  left: 5px;
+
+  font-size: 40px;
+  font-weight: lighter;
+  color: #493d31;
+}
+
+.benefit-card__info {
+  font-size: 15px;
+  text-align: right;
+  color: #493d31;
+}
+
+.benefit-card__number {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 15px;
+
+  text-align: right;
+  color: white;
+}

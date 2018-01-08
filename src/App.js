@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import Home from './container/home.connector';
+import SideBar from './container/sideBar.component';
 
 import './App.css';
 import './bootstrap.css';
@@ -13,7 +14,10 @@ const App = () => (
       <img src={logo} className="App-logo" alt="logo" />
       <h2>Welcome to React/Electron</h2>
     </div>
-    <Home />
+    <div className="App-content">
+      <SideBar />
+      <Home />
+    </div>
   </div>
 );
 
