@@ -4,41 +4,57 @@ import _ from 'lodash';
 
 import './benefit.css';
 
+const subPoucent = (a, b) => {
+  if (b === 0) {
+    return 0;
+  }
+
+  return a - a * (b / 100);
+};
+
+const precisionRound = (number, precision) => {
+  const factor = Math.pow(10, precision);
+
+  return Math.round(number * factor) / factor;
+};
+
 class SideBarBenefit extends Component {
   getTaxableTurnOver = () => {
     const { taxableBenefit, imposed, responsability } = this.props;
-    const getRent = responsability && responsability.rent;
-    const getCoverage = responsability && responsability.coverage;
 
-    const GetResponsabilty = _.parseInt(getRent) + _.parseInt(getCoverage);
+    const rent = parseFloat(_.get(responsability, 'rent', 0));
+    const coverage = parseFloat(_.get(responsability, 'coverage', 0));
 
-    const getBothTaxation = imposed && imposed.bothTaxation;
-    const getContribution = imposed && imposed.contribution;
+    const GetResponsabilty = rent + coverage;
 
-    const substractTaxation = taxableBenefit - taxableBenefit * (_.parseInt(getBothTaxation) / 100);
-    const substractContribution = substractTaxation - substractTaxation * (_.parseInt(getContribution) / 100);
+    const bothTaxation = parseFloat(_.get(imposed, 'bothTaxation', 0));
+    const contribution = parseFloat(_.get(imposed, 'contribution', 0));
 
-    const result = Math.round(substractContribution - GetResponsabilty);
+    const substractTaxation = subPoucent(taxableBenefit, bothTaxation);
+    const substractContribution = subPoucent(substractTaxation, contribution);
 
-    return result;
+    const getResult = substractContribution - GetResponsabilty;
+
+    return precisionRound(getResult, 2);
   };
 
   getoveralTurnOver = () => {
     const { overallBenefit, imposed, responsability } = this.props;
-    const getRent = responsability && responsability.rent;
-    const getCoverage = responsability && responsability.coverage;
 
-    const GetResponsabilty = _.parseInt(getRent) + _.parseInt(getCoverage);
+    const rent = parseFloat(_.get(responsability, 'rent', 0));
+    const coverage = parseFloat(_.get(responsability, 'coverage', 0));
 
-    const getBothTaxation = imposed && imposed.bothTaxation;
-    const getContribution = imposed && imposed.contribution;
+    const GetResponsabilty = rent + coverage;
 
-    const substractTaxation = overallBenefit - overallBenefit * (_.parseInt(getBothTaxation) / 100);
-    const substractContribution = substractTaxation - substractTaxation * (_.parseInt(getContribution) / 100);
+    const getBothTaxation = parseFloat(_.get(imposed, 'bothTaxation', 0));
+    const getContribution = parseFloat(_.get(imposed, 'contribution', 0));
 
-    const result = Math.round(substractContribution - GetResponsabilty);
+    const substractTaxation = subPoucent(overallBenefit, getBothTaxation);
+    const substractContribution = subPoucent(substractTaxation, getContribution);
 
-    return result;
+    const getResult = substractContribution - GetResponsabilty;
+
+    return precisionRound(getResult, 2);
   };
 
   render() {
@@ -48,12 +64,12 @@ class SideBarBenefit extends Component {
         <div className="sidebar__content-benefit">
           <div className="benefit-card">
             <span className="benefit-card__symbol">€</span>
-            <span className="benefit-card__number">{this.getTaxableTurnOver()}</span>
+            <span className="benefit-card__number">{this.getTaxableTurnOver() || 'Non Défini'}</span>
             <p className="benefit-card__info">Bénéfice Imposable</p>
           </div>
           <div className="benefit-card">
             <span className="benefit-card__symbol">€</span>
-            <span className="benefit-card__number">{this.getoveralTurnOver()}</span>
+            <span className="benefit-card__number">{this.getoveralTurnOver() || 'Non Défini'}</span>
             <p className="benefit-card__info">Bénéfice total</p>
           </div>
         </div>
@@ -64,6 +80,10 @@ class SideBarBenefit extends Component {
 SideBarBenefit.propTypes = {
   overallBenefit: PropTypes.number.isRequired,
   taxableBenefit: PropTypes.number.isRequired,
+  // eslint-disable-next-line
+  imposed: PropTypes.object,
+  // eslint-disable-next-line
+  responsability: PropTypes.object,
 };
 
 export default SideBarBenefit;
