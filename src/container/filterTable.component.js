@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Modal from 'react-bootstrap/lib/Modal';
 import Edit from '../icons/edit.svg';
 import FilterTableEdit from '../module/filterTableEdit.component';
+import monthToString from './month.utils';
 
 class FilterTable extends Component {
   constructor(props) {
@@ -32,11 +33,12 @@ class FilterTable extends Component {
   render() {
     const { filter, createFilterTableAction } = this.props;
     const { modalOpen, modalContent } = this.state;
+    const monthHighlighted = filter.month;
 
     return (
       <div>
         <p>{filter.year}</p>
-        <p>{filter.month}</p>
+        <p>{monthToString(monthHighlighted)}</p>
         <button onClick={() => this.editFilter(filter)}>
           <img className="icons" src={Edit} alt="edit" />
         </button>
