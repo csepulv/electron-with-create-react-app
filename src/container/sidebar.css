@@ -9,6 +9,7 @@
   background-color: #d2d0d0;
   transition: all 1s ease;
   cursor: pointer;
+  border: none;
 }
 
 .sidebar__button:hover {

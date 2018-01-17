@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { LOAD_FILTER, CREATE_FILTER, UPDATE_FILTER } from './filter.actions';
+import { LOAD_FILTER, CREATE_FILTER } from './filter.actions';
 
 const initialState = {};
 

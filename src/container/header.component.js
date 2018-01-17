@@ -1,5 +1,5 @@
 import React from 'react';
-import FilterTable from './filterTable.connector';
+import FilterTable from '../component/filterTable.connector';
 import './header.css';
 
 const Header = () => (

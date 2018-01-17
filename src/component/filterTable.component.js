@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Modal from 'react-bootstrap/lib/Modal';
 import Edit from '../icons/edit.svg';
 import FilterTableEdit from '../module/filterTableEdit.component';
-import monthToString from './month.utils';
+import monthToString from '../utils/month.utils';
 import './filter-table.css';
 
 class FilterTable extends Component {

@@ -9,9 +9,3 @@ export const createFilterTable = filter => ({
   type: CREATE_FILTER,
   filter,
 });
-
-export const UPDATE_FILTER = 'UPDATE_FILTER';
-export const updateFilterTable = filter => ({
-  type: UPDATE_FILTER,
-  filter,
-});

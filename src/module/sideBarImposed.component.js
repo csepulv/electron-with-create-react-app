@@ -13,7 +13,6 @@ class SideBarImposed extends Component {
     if (!imposed.id) {
       imposed = {
         bothTaxation: '5.7',
-        // ça ne changera jamais
         contribution: '0.2',
       };
     }
