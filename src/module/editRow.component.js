@@ -38,6 +38,10 @@ class EditRow extends Component {
   };
 
   handleSubmit = () => {
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth();
+
     const { createConsultationAction, updateConsultationAction, toggleModal } = this.props;
     const { consultation } = this.state;
 
@@ -48,7 +52,7 @@ class EditRow extends Component {
       return;
     }
 
-    createConsultationAction(consultation);
+    createConsultationAction({ ...consultation, month: currentMonth, year: currentYear });
     toggleModal();
   };
 
@@ -92,7 +96,7 @@ class EditRow extends Component {
                 placeholder="select"
                 name="meansPayment"
                 onChange={this.handleInputChange}
-                value={consultation.payment}
+                value={consultation.meansPayment}
               >
                 <option value="Cheque">Chèque</option>
                 <option value="Liquide">Liquide</option>

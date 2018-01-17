@@ -34,15 +34,29 @@ class Tbody extends Component {
   };
 
   render() {
-    const { consultations } = this.props;
+    const { consultations, filter } = this.props;
+    const renderConsultation = _.map(
+      _.filter(consultations, consultation => {
+        const consultationDate = consultation.month;
 
-    return <tbody>{_.map(consultations, this.renderLine)}</tbody>;
+        if (consultationDate === _.parseInt(filter.month)) {
+          return consultation;
+        }
+
+        return null;
+      }),
+      this.renderLine,
+    );
+
+    return <tbody>{renderConsultation}</tbody>;
   }
 }
 
 Tbody.propTypes = {
   // eslint-disable-next-line
   consultations: PropTypes.object.isRequired,
+  // eslint-disable-next-line
+  filter: PropTypes.object,
   editConsultation: PropTypes.func.isRequired,
   deleteConsultationAction: PropTypes.func.isRequired,
 };

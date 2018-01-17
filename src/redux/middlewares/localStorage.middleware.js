@@ -7,6 +7,7 @@ import {
 } from '../consultation/consultation.actions';
 
 import { CREATE_IMPOSED, CREATE_RESPONSABILITY, LOAD_IMPOSED } from '../imposed/imposed.actions';
+import { CREATE_FILTER, LOAD_FILTER } from '../filter/filter.actions';
 
 export const consultations = localforage.createInstance({
   name: 'consultations',
@@ -14,6 +15,10 @@ export const consultations = localforage.createInstance({
 
 export const imposed = localforage.createInstance({
   name: 'imposed',
+});
+
+export const filter = localforage.createInstance({
+  name: 'filterTable',
 });
 
 export default store => next => action => {
@@ -50,6 +55,23 @@ export default store => next => action => {
       imposed.getItem('imposed').then(value => {
         // eslint-disable-next-line
         action.imposed = value;
+        next(action);
+      });
+
+      break;
+    }
+    case CREATE_FILTER: {
+      next(action);
+
+      const { getState } = store;
+
+      filter.setItem('filterTable', getState().filter.filter);
+      break;
+    }
+    case LOAD_FILTER: {
+      filter.getItem('filterTable').then(value => {
+        // eslint-disable-next-line
+        action.filter = value;
         next(action);
       });
 

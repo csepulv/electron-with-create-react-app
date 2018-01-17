@@ -7,6 +7,7 @@ class Home extends Component {
   componentDidMount() {
     this.props.loadConsultationsAction();
     this.props.loadImposedActions();
+    this.props.loadFilterTableActions();
   }
 
   render() {
@@ -21,6 +22,7 @@ class Home extends Component {
 Home.propTypes = {
   loadConsultationsAction: PropTypes.func.isRequired,
   loadImposedActions: PropTypes.func.isRequired,
+  loadFilterTableActions: PropTypes.func.isRequired,
 };
 
 export default Home;

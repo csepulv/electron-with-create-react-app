@@ -6,6 +6,7 @@ import Table from 'react-bootstrap/lib/Table';
 import Tbody from '../component/tbody.connector';
 import Thead from '../component/thead.component';
 import EditRow from '../module/editRow.connector';
+import './list.css';
 
 class List extends Component {
   constructor(props) {
@@ -39,14 +40,14 @@ class List extends Component {
   };
 
   render() {
-    const { consultations } = this.props;
+    const { consultations, filter } = this.props;
     const { modalOpen, modalContent } = this.state;
 
     return (
-      <div>
+      <div className="list">
         <Table striped bordered condensed hover>
           <Thead createConsultation={this.createConsultation} />
-          <Tbody consultations={consultations} editConsultation={this.editConsultation} />
+          <Tbody consultations={consultations} editConsultation={this.editConsultation} filter={filter} />
         </Table>
 
         <Modal show={modalOpen} onHide={this.toggleModal}>
@@ -60,6 +61,8 @@ class List extends Component {
 List.propTypes = {
   // eslint-disable-next-line
   consultations: PropTypes.object.isRequired,
+  // eslint-disable-next-line
+  filter: PropTypes.object,
 };
 
 export default List;

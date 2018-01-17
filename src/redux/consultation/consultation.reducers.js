@@ -42,9 +42,12 @@ export default (state = initialState, action) => {
         return state;
       }
 
-      const lastId = Object.keys(consultations)
-        .sort((a, b) => a - b)
-        .slice(-1);
+      const lastId = parseInt(
+        Object.keys(consultations)
+          .sort((a, b) => a - b)
+          .slice(-1),
+        10,
+      );
 
       return {
         ...state,
@@ -61,6 +64,7 @@ export default (state = initialState, action) => {
       const { consultation } = action;
       const consultations = { ...state.consultations };
 
+      // consultations[id] = { id, ...consultation, month: 0, year: 2018 };
       consultations[id] = { id, ...consultation };
 
       return {

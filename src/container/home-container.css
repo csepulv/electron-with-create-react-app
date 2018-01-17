@@ -1,3 +1,7 @@
 .home-container {
   flex: auto;
+  margin-top: 20px;
+  margin-right: 10px;
+  height: calc(100vh - 60px);
+  overflow: hidden;
 }
