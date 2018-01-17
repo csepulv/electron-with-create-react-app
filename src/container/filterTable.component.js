@@ -38,11 +38,11 @@ class FilterTable extends Component {
 
     return (
       <div className="filter-table">
-        <p className="filter-table__year">
-          <strong>Année</strong> : {filter.year}
-        </p>
         <p className="filter-table__month">
           <strong>Mois</strong> : {monthToString(monthHighlighted)}
+        </p>
+        <p className="filter-table__year">
+          <strong>Année</strong> : {filter.year}
         </p>
         <button className="filter-table__button" onClick={() => this.editFilter(filter)}>
           <img className="icons" src={Edit} alt="edit" />

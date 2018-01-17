@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 
 import { createFilterTable } from '../redux/filter/filter.actions';
 import FilterTable from './filterTable.component';
