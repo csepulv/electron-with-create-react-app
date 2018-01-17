@@ -5,6 +5,7 @@ import Modal from 'react-bootstrap/lib/Modal';
 import Edit from '../icons/edit.svg';
 import FilterTableEdit from '../module/filterTableEdit.component';
 import monthToString from './month.utils';
+import './filter-table.css';
 
 class FilterTable extends Component {
   constructor(props) {
@@ -36,10 +37,14 @@ class FilterTable extends Component {
     const monthHighlighted = filter.month;
 
     return (
-      <div>
-        <p>{filter.year}</p>
-        <p>{monthToString(monthHighlighted)}</p>
-        <button onClick={() => this.editFilter(filter)}>
+      <div className="filter-table">
+        <p className="filter-table__year">
+          <strong>Année</strong> : {filter.year}
+        </p>
+        <p className="filter-table__month">
+          <strong>Mois</strong> : {monthToString(monthHighlighted)}
+        </p>
+        <button className="filter-table__button" onClick={() => this.editFilter(filter)}>
           <img className="icons" src={Edit} alt="edit" />
         </button>
         <Modal show={modalOpen} onHide={this.toggleModal}>

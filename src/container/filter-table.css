@@ -1,0 +1,21 @@
+.filter-table {
+  display: inline-flex;
+
+  color: white;
+}
+
+.filter-table__year {
+  flex: auto;
+
+  padding: 0 10px;
+}
+
+.filter-table__month {
+  flex: auto;
+
+  padding: 0 10px;
+}
+
+.filter-table__button {
+  height: 25px;
+}

@@ -5,8 +5,8 @@ import Modal from 'react-bootstrap/lib/Modal';
 import Table from 'react-bootstrap/lib/Table';
 import Tbody from '../component/tbody.connector';
 import Thead from '../component/thead.component';
-import FilterTable from './filterTable.connector';
 import EditRow from '../module/editRow.connector';
+import './list.css';
 
 class List extends Component {
   constructor(props) {
@@ -44,8 +44,7 @@ class List extends Component {
     const { modalOpen, modalContent } = this.state;
 
     return (
-      <div>
-        <FilterTable />
+      <div className="list">
         <Table striped bordered condensed hover>
           <Thead createConsultation={this.createConsultation} />
           <Tbody consultations={consultations} editConsultation={this.editConsultation} />
