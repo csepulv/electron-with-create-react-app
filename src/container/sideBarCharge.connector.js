@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import SideBarCharge from './sideBarCharge.component';
-import { createImposed, createResponsability } from '../redux/imposed/imposed.actions';
 
 const mapStateToProps = state => ({
   imposed: state.imposed.fiscal,
@@ -9,7 +8,4 @@ const mapStateToProps = state => ({
   taxableBenefit: state.consultation.benefit.taxableBenefit,
 });
 
-export default connect(mapStateToProps, {
-  createImposedAction: createImposed,
-  createResponsabilitydAction: createResponsability,
-})(SideBarCharge);
+export default connect(mapStateToProps)(SideBarCharge);

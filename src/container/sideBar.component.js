@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import classname from 'classnames';
 
-import SideBarCharge from './sideBarCharge.connector';
+// import SideBarCharge from './sideBarCharge.connector';
 
 import './sidebar-container.css';
 import './sidebar.css';
+
+import Sumary from '../module/sumary/sumary.component';
 
 class SideBar extends Component {
   constructor(props) {
@@ -27,10 +29,12 @@ class SideBar extends Component {
       'sidebar-container--closed': sidebarOpen,
     });
 
+    const { revenue, expenses, profit } = this.props;
+
     return (
       <div className={sidebarClasses}>
         <div className="sidebar__content">
-          <SideBarCharge />
+          <Sumary revenue={revenue} expenses={expenses} profit={profit} />
           <div className="sidebar__content-border-bottom" />
         </div>
         <button className="sidebar__button" onClick={this.toggleSidebar} />

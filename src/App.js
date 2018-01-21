@@ -1,7 +1,7 @@
 import React from 'react';
-import Home from './container/home.connector';
-import SideBar from './container/sideBar.component';
 import Header from './container/header.component';
+
+import AccountContainer from './module/account/account.connector';
 
 import './App.css';
 import './bootstrap.css';
@@ -11,10 +11,7 @@ import './icons.css';
 const App = () => (
   <div className="App">
     <Header />
-    <div className="App-content">
-      <SideBar />
-      <Home />
-    </div>
+    <AccountContainer />
   </div>
 );
 

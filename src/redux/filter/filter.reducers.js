@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
 
       return {
         ...state,
-        ...action.filter,
+        ...filter,
       };
     }
 
@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
       const { filter } = action;
       return {
         ...state,
-        filter,
+        ...filter,
       };
     }
 

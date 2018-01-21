@@ -64,6 +64,11 @@ class SideBarBenefit extends Component {
         <div className="sidebar__content-benefit">
           <div className="benefit-card">
             <span className="benefit-card__symbol">€</span>
+            <span className="benefit-card__number">'Non Défini'</span>
+            <p className="benefit-card__info">Recette</p>
+          </div>
+          <div className="benefit-card">
+            <span className="benefit-card__symbol">€</span>
             <span className="benefit-card__number">{this.getTaxableTurnOver() || 'Non Défini'}</span>
             <p className="benefit-card__info">Bénéfice Imposable</p>
           </div>
