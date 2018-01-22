@@ -9,7 +9,11 @@ import '../../component/row-head.css';
 const header = ({ headers, headerAction }) => (
   <thead>
     <tr className="row-head__container">
-      {map(headers, label => <th className="row-head__item">{label}</th>)}
+      {map(headers, label => (
+        <th className="row-head__item" key={`header-${label}`}>
+          {label}
+        </th>
+      ))}
       <th className="row-head__item" colSpan="2">
         <button onClick={headerAction}>
           <img className="icons" src={More} alt="Add" />

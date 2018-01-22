@@ -1,7 +1,10 @@
 /* eslint-disable */
 import { LOAD_FILTER, CREATE_FILTER } from './filter.actions';
 
-const initialState = {};
+const initialState = {
+  month: '0',
+  year: '2018',
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {

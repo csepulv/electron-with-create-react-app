@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './container/header.component';
 
 import AccountContainer from './module/account/account.connector';
+// import Home from './container/home.connector'
 
 import './App.css';
 import './bootstrap.css';

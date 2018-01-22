@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { forEach, map } from 'lodash';
+import { map } from 'lodash';
 
 import Edit from '../../icons/edit.svg';
 import Remove from '../../icons/basket.svg';
@@ -14,7 +14,7 @@ class Body extends Component {
 
     return (
       <tr key={id}>
-        {map(row, data => <td>{data}</td>)}
+        {map(row, (data, dataId) => <td key={`${id}-${dataId}`}>{data}</td>)}
 
         <td>
           <button onClick={() => this.props.editAction(id)}>
@@ -31,7 +31,7 @@ class Body extends Component {
   };
 
   render() {
-    return <tbody>{forEach(this.props.rows, this.renderLine)}</tbody>;
+    return <tbody>{map(this.props.rows, this.renderLine)}</tbody>;
   }
 }
 

@@ -6,7 +6,7 @@ import './home-container.css';
 class Home extends Component {
   componentDidMount() {
     this.props.loadConsultationsAction();
-    this.props.loadImposedActions();
+    // this.props.loadImposedActions();
     this.props.loadFilterTableActions();
   }
 

@@ -20,6 +20,10 @@ const getExpenses = charges => {
 };
 
 class AccountContainer extends Component {
+  componentDidMount() {
+    this.props.loadConsultationsAction();
+  }
+
   prepareConsultation() {
     const { consultations, filters } = this.props;
 
@@ -49,21 +53,22 @@ class AccountContainer extends Component {
 
     const profit = revenue - expenses;
 
-    const props = {
-      consultations,
-      revenue,
-      charges,
-      expenses,
-      profit,
-    };
-
-    return <AccountComponent {...props} />;
+    return (
+      <AccountComponent
+        revenue={revenue}
+        expenses={expenses}
+        profit={profit}
+        consultations={consultations}
+        charges={charges}
+      />
+    );
   }
 }
 
 AccountContainer.propTypes = {
   consultations: PropTypes.object.isRequired,
   filters: PropTypes.object.isRequired,
+  loadConsultationsAction: PropTypes.func.isRequired,
 };
 
 export default AccountContainer;
