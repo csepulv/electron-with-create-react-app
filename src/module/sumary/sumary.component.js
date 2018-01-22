@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import './benefit.css';
 
 const Sumary = ({ revenue, expenses, profit }) => (
   <div>
@@ -23,6 +25,10 @@ const Sumary = ({ revenue, expenses, profit }) => (
   </div>
 );
 
-// revenue={revenue} expenses={expenses} profit={profit}
+Sumary.propTypes = {
+  revenue: PropTypes.number.isRequired,
+  expenses: PropTypes.number.isRequired,
+  profit: PropTypes.number.isRequired,
+};
 
 export default Sumary;

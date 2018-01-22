@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import More from '../icons/more.svg';
-import './row-head.css';
 
 const Thead = ({ createConsultation }) => (
   <thead>

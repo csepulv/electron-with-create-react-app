@@ -6,15 +6,16 @@ import {
   LOAD_CONSULTATIONS,
 } from '../consultation/consultation.actions';
 
-// import { CREATE_IMPOSED, CREATE_RESPONSABILITY, LOAD_IMPOSED } from '../imposed/imposed.actions';
+import { LOAD_CHARGES, CREATE_CHARGE, DELETE_CHARGE, UPDATE_CHARGE } from '../charge/charge.actions';
+
 import { CREATE_FILTER, LOAD_FILTER } from '../filter/filter.actions';
 
 export const consultations = localforage.createInstance({
   name: 'consultations',
 });
 
-export const imposed = localforage.createInstance({
-  name: 'imposed',
+export const charges = localforage.createInstance({
+  name: 'charges',
 });
 
 export const filter = localforage.createInstance({
@@ -42,25 +43,26 @@ export default store => next => action => {
 
       break;
     }
-    // case CREATE_RESPONSABILITY:
-    /* case CREATE_IMPOSED: {
+    case CREATE_CHARGE:
+    case DELETE_CHARGE:
+    case UPDATE_CHARGE: {
       next(action);
 
       const { getState } = store;
 
-      imposed.setItem('imposed', getState().imposed);
+      charges.setItem('charges', getState().charges.charges);
       break;
-    }*/
+    }
 
-    /* case LOAD_IMPOSED: {
-      imposed.getItem('imposed').then(value => {
+    case LOAD_CHARGES: {
+      charges.getItem('charges').then(value => {
         // eslint-disable-next-line
-        action.imposed = value;
+        action.charges = value;
         next(action);
       });
 
       break;
-    }*/
+    }
 
     case CREATE_FILTER: {
       next(action);

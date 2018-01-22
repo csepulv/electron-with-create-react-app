@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { map } from 'lodash';
 
 import More from '../../icons/more.svg';
-import '../../component/row-head.css';
+import '../row-head.css';
 
 const header = ({ headers, headerAction }) => (
   <thead>

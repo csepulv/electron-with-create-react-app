@@ -7,6 +7,8 @@ import Table from 'react-bootstrap/lib/Table';
 import Header from '../grid/header.component';
 import Body from '../grid/body.component';
 
+import '../list.css';
+
 const Consultations = ({ consultations, createAction, editAction, deleteAction }) => {
   const rows = [];
 
@@ -25,7 +27,7 @@ const Consultations = ({ consultations, createAction, editAction, deleteAction }
   const headers = ['Date', 'Patient', 'Consulation', 'Moyen de paiement', 'Règlement'];
 
   return (
-    <div className="list">
+    <div className="list list__consultation">
       <Table striped bordered condensed hover>
         <Header headers={headers} headerAction={createAction} />
         <Body rows={rows} editAction={editAction} deleteAction={deleteAction} />

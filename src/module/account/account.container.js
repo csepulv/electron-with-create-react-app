@@ -14,7 +14,7 @@ const getRevenue = consultations => {
 };
 
 const getExpenses = charges => {
-  const amounts = map(charges, 'amount');
+  const amounts = map(charges, 'price');
 
   return amounts.reduce(sum, 0);
 };
@@ -22,6 +22,7 @@ const getExpenses = charges => {
 class AccountContainer extends Component {
   componentDidMount() {
     this.props.loadConsultationsAction();
+    this.props.loadChargesAction();
   }
 
   prepareConsultation() {
@@ -39,9 +40,17 @@ class AccountContainer extends Component {
   }
 
   prepareCharge() {
-    // #TODO
+    const { charges, filters } = this.props;
 
-    return {};
+    return filter(charges, charge => {
+      const { month, year } = charge;
+
+      if (month === parseInt(filters.month) && year === parseInt(filters.year)) {
+        return charge;
+      }
+
+      return null;
+    });
   }
 
   render() {
@@ -67,8 +76,10 @@ class AccountContainer extends Component {
 
 AccountContainer.propTypes = {
   consultations: PropTypes.object.isRequired,
+  charges: PropTypes.object.isRequired,
   filters: PropTypes.object.isRequired,
   loadConsultationsAction: PropTypes.func.isRequired,
+  loadChargesAction: PropTypes.func.isRequired,
 };
 
 export default AccountContainer;
