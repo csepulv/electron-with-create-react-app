@@ -32,6 +32,16 @@ body {
   margin-right: 10px;
 }
 
+.App-content #accountTabs-tab-1,
+.App-content #accountTabs-tab-2 {
+  color: black;
+}
+
+.App-content .active #accountTabs-tab-1,
+.App-content .active #accountTabs-tab-2 {
+  color: #9f8f75;
+}
+
 .App-intro {
   font-size: large;
 }

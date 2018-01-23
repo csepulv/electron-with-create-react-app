@@ -8,7 +8,7 @@ import {
 
 import { LOAD_CHARGES, CREATE_CHARGE, DELETE_CHARGE, UPDATE_CHARGE } from '../charge/charge.actions';
 
-import { CREATE_FILTER, LOAD_FILTER } from '../filter/filter.actions';
+import { CREATE_FILTER, LOAD_FILTER } from '../filtering/filtering.actions';
 
 export const consultations = localforage.createInstance({
   name: 'consultations',
@@ -18,8 +18,8 @@ export const charges = localforage.createInstance({
   name: 'charges',
 });
 
-export const filter = localforage.createInstance({
-  name: 'filterTable',
+export const filtering = localforage.createInstance({
+  name: 'filtering',
 });
 
 export default store => next => action => {
@@ -69,13 +69,13 @@ export default store => next => action => {
 
       const { getState } = store;
 
-      filter.setItem('filterTable', getState().filter.filter);
+      filtering.setItem('filtering', getState().filtering);
       break;
     }
     case LOAD_FILTER: {
-      filter.getItem('filterTable').then(value => {
+      filtering.getItem('filtering').then(value => {
         // eslint-disable-next-line
-        action.filter = value;
+        action.filtering = value;
         next(action);
       });
 

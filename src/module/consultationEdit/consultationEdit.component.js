@@ -65,9 +65,10 @@ class ConsulationEdit extends Component {
 
   render() {
     const { consultation } = this.state;
+    const { open, toggleModal } = this.props;
 
     return (
-      <Modal show={this.props.open} onHide={this.props.toggleModal}>
+      <Modal show={open} onHide={toggleModal}>
         <Modal.Header closeButton>
           <Modal.Title>Edition: </Modal.Title>
         </Modal.Header>

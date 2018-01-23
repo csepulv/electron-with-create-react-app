@@ -23,15 +23,16 @@ class AccountContainer extends Component {
   componentDidMount() {
     this.props.loadConsultationsAction();
     this.props.loadChargesAction();
+    this.props.loadFilterTableAction();
   }
 
   prepareConsultation() {
-    const { consultations, filters } = this.props;
+    const { consultations, filtering } = this.props;
 
     return filter(consultations, consultation => {
       const { month, year } = consultation;
 
-      if (month === parseInt(filters.month) && year === parseInt(filters.year)) {
+      if (month === parseInt(filtering.month) && year === parseInt(filtering.year)) {
         return consultation;
       }
 
@@ -40,12 +41,12 @@ class AccountContainer extends Component {
   }
 
   prepareCharge() {
-    const { charges, filters } = this.props;
+    const { charges, filtering } = this.props;
 
     return filter(charges, charge => {
       const { month, year } = charge;
 
-      if (month === parseInt(filters.month) && year === parseInt(filters.year)) {
+      if (month === parseInt(filtering.month) && year === parseInt(filtering.year)) {
         return charge;
       }
 
@@ -77,9 +78,10 @@ class AccountContainer extends Component {
 AccountContainer.propTypes = {
   consultations: PropTypes.object.isRequired,
   charges: PropTypes.object.isRequired,
-  filters: PropTypes.object.isRequired,
+  filtering: PropTypes.object.isRequired,
   loadConsultationsAction: PropTypes.func.isRequired,
   loadChargesAction: PropTypes.func.isRequired,
+  loadFilterTableAction: PropTypes.func.isRequired,
 };
 
 export default AccountContainer;

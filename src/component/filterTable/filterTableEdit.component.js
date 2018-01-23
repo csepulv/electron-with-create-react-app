@@ -11,31 +11,31 @@ class FilterTable extends Component {
   constructor(props) {
     super(props);
 
-    const { filter } = this.props;
+    const { filtering } = this.props;
 
-    this.state = { filter };
+    this.state = { filtering };
   }
 
   handleInputChange = event => {
     event.preventDefault();
     const { name, value } = event.target;
-    const { filter } = this.state;
+    const { filtering } = this.state;
 
-    filter[name] = value;
+    filtering[name] = value;
 
-    this.setState({ filter });
+    this.setState({ filtering });
   };
 
   handleSubmit = () => {
     const { createFilterTableAction, toggleModal } = this.props;
-    const { filter } = this.state;
+    const { filtering } = this.state;
 
-    createFilterTableAction(filter);
+    createFilterTableAction(filtering);
     toggleModal();
   };
 
   render() {
-    const { filter } = this.props;
+    const { filtering } = this.props;
 
     return (
       <div>
@@ -50,9 +50,9 @@ class FilterTable extends Component {
                 componentClass="select"
                 placeholder="select"
                 name="month"
-                key={filter.month}
+                key={filtering.month}
                 onChange={this.handleInputChange}
-                value={filter.month}
+                value={filtering.month}
               >
                 <option value="0">Janvier</option>
                 <option value="1">Février</option>
@@ -71,7 +71,7 @@ class FilterTable extends Component {
 
             <FormGroup controlId="formBasicText">
               <ControlLabel>Année :</ControlLabel>
-              <FormControl type="number" name="year" value={filter.year} onChange={this.handleInputChange} />
+              <FormControl type="number" name="year" value={filtering.year} onChange={this.handleInputChange} />
             </FormGroup>
             <Button onClick={this.handleSubmit}>Filtrer</Button>
           </form>
@@ -82,7 +82,7 @@ class FilterTable extends Component {
 }
 
 FilterTable.defaultProps = {
-  filter: {
+  filtering: {
     year: new Date().getFullYear(),
     month: new Date().getMonth(),
   },
@@ -90,7 +90,7 @@ FilterTable.defaultProps = {
 
 FilterTable.propTypes = {
   // eslint-disable-next-line
-  filter: PropTypes.object,
+  filtering: PropTypes.object,
   createFilterTableAction: PropTypes.func.isRequired,
   toggleModal: PropTypes.func.isRequired,
 };

@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { LOAD_FILTER, CREATE_FILTER } from './filter.actions';
+import { LOAD_FILTER, CREATE_FILTER } from './filtering.actions';
 
 const initialState = {
   month: '0',
@@ -9,23 +9,23 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case LOAD_FILTER: {
-      const { filter } = action;
+      const { filtering } = action;
 
-      if (!filter) {
+      if (!filtering) {
         return state;
       }
 
       return {
         ...state,
-        ...filter,
+        ...filtering,
       };
     }
 
     case CREATE_FILTER: {
-      const { filter } = action;
+      const { filtering } = action;
       return {
         ...state,
-        ...filter,
+        ...filtering,
       };
     }
 

@@ -12,6 +12,7 @@ import ConsulationEdit from '../../module/consultationEdit/consultationEdit.conn
 
 import Charges from '../../module/charges/charges.connector';
 import ChargeEdit from '../../module/chargeEdit/chargeEdit.connector';
+import FixedCharges from '../../module/fixedCharges/fixedCharges.component';
 
 class AccountComponent extends Component {
   constructor() {
@@ -20,19 +21,21 @@ class AccountComponent extends Component {
     this.state = {
       consulationEditOpen: false,
       chargeEditOpen: false,
-      consulationEditContent: {},
+      editContent: {},
     };
   }
 
   toggleConsulationEdit = () => {
     this.setState({
       consulationEditOpen: !this.state.consulationEditOpen,
+      chargeEditOpen: false,
     });
   };
 
   toggleChargeEdit = () => {
     this.setState({
       chargeEditOpen: !this.state.chargeEditOpen,
+      consulationEditOpen: false,
     });
   };
 
@@ -40,7 +43,7 @@ class AccountComponent extends Component {
     this.setState({
       consulationEditOpen: true,
       chargeEditOpen: false,
-      consulationEditContent: find(this.props.consultations, element => element.id === id),
+      editContent: find(this.props.consultations, element => element.id === id),
     });
   };
 
@@ -48,7 +51,7 @@ class AccountComponent extends Component {
     this.setState({
       chargeEditOpen: true,
       consulationEditOpen: false,
-      chargeEditContent: find(this.props.charges, element => element.id === id),
+      editContent: find(this.props.charges, element => element.id === id),
     });
   };
 
@@ -59,7 +62,7 @@ class AccountComponent extends Component {
       <div className="App-content">
         <SideBar revenue={revenue} expenses={expenses} profit={profit} />
         <div className="App-content__list">
-          <Tabs defaultActiveKey={1} id="accountTabs">
+          <Tabs defaultActiveKey={2} id="accountTabs">
             <Tab eventKey={1} title="Consultations">
               <Consultations
                 consultations={consultations}
@@ -73,18 +76,19 @@ class AccountComponent extends Component {
                 createAction={() => this.setState({ chargeEditOpen: true })}
                 editAction={this.openCharge}
               />
+              <FixedCharges />
             </Tab>
           </Tabs>
         </div>
         <ConsulationEdit
           open={this.state.consulationEditOpen}
-          consultation={this.state.consulationEditContent}
+          consultation={this.state.editContent}
           toggleModal={this.toggleConsulationEdit}
         />
 
         <ChargeEdit
           open={this.state.chargeEditOpen}
-          consultation={this.state.chargeEditContent}
+          charge={this.state.editContent}
           toggleModal={this.toggleChargeEdit}
         />
       </div>

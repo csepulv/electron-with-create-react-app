@@ -27,14 +27,14 @@ class FilterTable extends Component {
   editFilter = () => {
     this.setState({
       modalOpen: !this.state.modalOpen,
-      modalContent: this.props.filter,
+      modalContent: this.props.filtering,
     });
   };
 
   render() {
-    const { filter, createFilterTableAction } = this.props;
+    const { filtering, createFilterTableAction } = this.props;
     const { modalOpen, modalContent } = this.state;
-    const monthHighlighted = filter.month;
+    const monthHighlighted = filtering.month;
 
     return (
       <div className="filter-table">
@@ -42,9 +42,9 @@ class FilterTable extends Component {
           <strong>Mois</strong> : {monthToString(monthHighlighted)}
         </p>
         <p className="filter-table__year">
-          <strong>Année</strong> : {filter.year}
+          <strong>Année</strong> : {filtering.year}
         </p>
-        <button className="filter-table__button" onClick={() => this.editFilter(filter)}>
+        <button className="filter-table__button" onClick={() => this.editFilter(filtering)}>
           <img className="icons" src={Edit} alt="edit" />
         </button>
         <Modal show={modalOpen} onHide={this.toggleModal}>
@@ -63,7 +63,7 @@ class FilterTable extends Component {
 
 FilterTable.propTypes = {
   // eslint-disable-next-line
-  filter: PropTypes.object,
+  filtering: PropTypes.object,
   createFilterTableAction: PropTypes.func.isRequired,
 };
 

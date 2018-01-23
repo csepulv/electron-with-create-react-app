@@ -62,19 +62,20 @@ class ChargeEdit extends Component {
 
   render() {
     const { charge } = this.state;
+    const { open, toggleModal } = this.props;
 
     return (
-      <Modal show={this.props.open} onHide={this.props.toggleModal}>
+      <Modal show={open} onHide={toggleModal}>
         <Modal.Header closeButton>
           <Modal.Title>Charge: </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form>
-            <FormGroup controlId="formBasicText">
+            <FormGroup controlId="formChargesName">
               <ControlLabel>Charges</ControlLabel>
               <FormControl type="text" name="name" value={charge.name} onChange={this.handleInputChange} />
             </FormGroup>
-            <FormGroup controlId="formBasicText">
+            <FormGroup controlId="formChargesPrice">
               <ControlLabel>Prix</ControlLabel>
               <FormControl type="number" min="0" name="price" value={charge.price} onChange={this.handleInputChange} />
             </FormGroup>
@@ -87,10 +88,7 @@ class ChargeEdit extends Component {
 }
 
 ChargeEdit.defaultProps = {
-  charge: {
-    name: '',
-    price: '0',
-  },
+  charge: {},
 };
 
 ChargeEdit.propTypes = {
