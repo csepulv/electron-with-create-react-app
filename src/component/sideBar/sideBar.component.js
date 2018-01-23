@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import classname from 'classnames';
 
 // import SideBarCharge from './sideBarCharge.connector';
@@ -6,7 +8,7 @@ import classname from 'classnames';
 import './sidebar-container.css';
 import './sidebar.css';
 
-import Sumary from '../module/sumary/sumary.component';
+import Sumary from '../../module/sumary/sumary.component';
 
 class SideBar extends Component {
   constructor(props) {
@@ -42,5 +44,11 @@ class SideBar extends Component {
     );
   }
 }
+
+SideBar.propTypes = {
+  revenue: PropTypes.number.isRequired,
+  expenses: PropTypes.number.isRequired,
+  profit: PropTypes.number.isRequired,
+};
 
 export default SideBar;

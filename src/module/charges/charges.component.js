@@ -16,12 +16,11 @@ const Charges = ({ createAction, editAction, deleteAction, charges }) => {
 
     buildedCharge.push(charge.name);
     buildedCharge.push(charge.price);
-    buildedCharge.push(charge.type);
 
     rows[charge.id] = buildedCharge;
   });
 
-  const headers = ['Charges', 'Prix', 'Type'];
+  const headers = ['Charges', 'Prix'];
 
   return (
     <div className="list list__charges">

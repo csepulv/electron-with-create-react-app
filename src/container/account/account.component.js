@@ -5,13 +5,13 @@ import { find } from 'lodash';
 import Tabs from 'react-bootstrap/lib/Tabs';
 import Tab from 'react-bootstrap/lib/Tab';
 
-import SideBar from '../../container/sideBar.component';
+import SideBar from '../../component/sideBar/sideBar.component';
 
-import Consultations from '../consultations/consultations.connector';
-import ConsulationEdit from '../consultationEdit/consultationEdit.connector';
+import Consultations from '../../module/consultations/consultations.connector';
+import ConsulationEdit from '../../module/consultationEdit/consultationEdit.connector';
 
-import Charges from '../charges/charges.connector';
-import ChargeEdit from '../chargeEdit/chargeEdit.connector';
+import Charges from '../../module/charges/charges.connector';
+import ChargeEdit from '../../module/chargeEdit/chargeEdit.connector';
 
 class AccountComponent extends Component {
   constructor() {

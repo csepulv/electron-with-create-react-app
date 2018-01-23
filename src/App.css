@@ -1,3 +1,10 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
 .App {
   text-align: center;
 }
@@ -36,4 +43,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.icons {
+  width: 15px;
+  height: 15px;
 }

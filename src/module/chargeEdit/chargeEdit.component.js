@@ -16,7 +16,6 @@ class ChargeEdit extends Component {
       charge = {
         name: '',
         price: '0',
-        type: '',
       };
     }
 
@@ -79,19 +78,6 @@ class ChargeEdit extends Component {
               <ControlLabel>Prix</ControlLabel>
               <FormControl type="number" min="0" name="price" value={charge.price} onChange={this.handleInputChange} />
             </FormGroup>
-            <ControlLabel>Valeur</ControlLabel>
-            <FormGroup>
-              <FormControl
-                componentClass="select"
-                placeholder="select"
-                name="type"
-                onChange={this.handleInputChange}
-                value={charge.type}
-              >
-                <option value="Euros">€</option>
-                <option value="Pourcentages">%</option>
-              </FormControl>
-            </FormGroup>
             <Button onClick={this.handleSubmit}>Valider</Button>
           </form>
         </Modal.Body>
@@ -104,7 +90,6 @@ ChargeEdit.defaultProps = {
   charge: {
     name: '',
     price: '0',
-    type: '',
   },
 };
 
