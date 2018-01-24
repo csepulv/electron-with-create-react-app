@@ -1,23 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { filter, parseInt, map } from 'lodash';
+import { filter, parseInt } from 'lodash';
 
+import { getRevenue, getExpenses } from '../../utils/algorithm.utils';
 import AccountComponent from './account.component';
-
-const sum = (accumulator, currentValue) => accumulator + parseInt(currentValue);
-
-const getRevenue = consultations => {
-  const payments = map(consultations, 'payment');
-
-  return payments.reduce(sum, 0);
-};
-
-const getExpenses = charges => {
-  const amounts = map(charges, 'price');
-
-  return amounts.reduce(sum, 0);
-};
 
 class AccountContainer extends Component {
   componentDidMount() {

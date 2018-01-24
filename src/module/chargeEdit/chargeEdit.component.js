@@ -7,6 +7,11 @@ import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import Button from 'react-bootstrap/lib/Button';
 
+const emptyCharge = {
+  name: '',
+  price: '0',
+};
+
 class ChargeEdit extends Component {
   constructor(props) {
     super(props);
@@ -23,11 +28,9 @@ class ChargeEdit extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { charge } = nextProps;
+    const charge = nextProps.charge.id ? nextProps.charge : { ...emptyCharge };
 
-    if (charge.id) {
-      this.setState({ charge });
-    }
+    this.setState({ charge });
   }
 
   handleInputChange = event => {

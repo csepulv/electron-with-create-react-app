@@ -62,24 +62,25 @@ class AccountComponent extends Component {
       <div className="App-content">
         <SideBar revenue={revenue} expenses={expenses} profit={profit} />
         <div className="App-content__list">
-          <Tabs defaultActiveKey={2} id="accountTabs">
+          <Tabs defaultActiveKey={1} id="accountTabs">
             <Tab eventKey={1} title="Consultations">
               <Consultations
                 consultations={consultations}
-                createAction={() => this.setState({ consulationEditOpen: true })}
+                createAction={() => this.setState({ consulationEditOpen: true, editContent: {} })}
                 editAction={this.openConsultation}
               />
             </Tab>
             <Tab eventKey={2} title="Charges">
               <Charges
                 charges={charges}
-                createAction={() => this.setState({ chargeEditOpen: true })}
+                createAction={() => this.setState({ chargeEditOpen: true, editContent: {} })}
                 editAction={this.openCharge}
               />
               <FixedCharges />
             </Tab>
           </Tabs>
         </div>
+
         <ConsulationEdit
           open={this.state.consulationEditOpen}
           consultation={this.state.editContent}

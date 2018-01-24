@@ -8,6 +8,13 @@ import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import Button from 'react-bootstrap/lib/Button';
 
+const emptyConsultation = {
+  date: moment().format('YYYY-MM-DD'),
+  name: '',
+  payment: '0',
+  meansPayment: 'Cheque',
+};
+
 class ConsulationEdit extends Component {
   constructor(props) {
     super(props);
@@ -26,11 +33,9 @@ class ConsulationEdit extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { consultation } = nextProps;
+    const consultation = nextProps.consultation.id ? nextProps.consultation : { ...emptyConsultation };
 
-    if (consultation.id) {
-      this.setState({ consultation });
-    }
+    this.setState({ consultation });
   }
 
   handleInputChange = event => {
