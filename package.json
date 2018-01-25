@@ -1,9 +1,12 @@
 {
-  "name": "electron-with-create-react-app",
+  "name": "morgane-comptability",
+  "productName": "Morgane Comptability app",
   "version": "0.1.0",
   "private": true,
+  "main": "index.js",
   "devDependencies": {
     "electron": "^1.7.9",
+    "electron-packager": "10.1.0",
     "eslint": "4.14.0",
     "eslint-config-m6web": "1.1.0",
     "eslint-config-prettier": "2.9.0",
@@ -39,6 +42,8 @@
     "electron": "electron .",
     "dev": "nf start -p 3000",
     "lint": "eslint src/",
-    "format": " prettier-eslint -- --write 'src/**/*.js'"
+    "format": " prettier-eslint -- --write 'src/**/*.js'",
+    "window":
+      "electron-packager . morgane-comptability --overwrite --asar=true --platform=win32 --arch=ia32 --icon=icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Morgane Comptability\""
   }
 }
