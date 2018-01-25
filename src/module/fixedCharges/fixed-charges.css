@@ -1,0 +1,17 @@
+.fixed-charges__title {
+  text-align: left;
+  color: #9f8f75;
+}
+.fixed-charges__list {
+  text-align: left;
+  padding-left: 0;
+}
+
+.fixed-charges__list-item {
+  display: inline;
+  margin-right: 10px;
+}
+
+.fixed-charges__list-item span {
+  font-weight: bold;
+}

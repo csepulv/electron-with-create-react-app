@@ -1,15 +1,36 @@
 {
-  "name": "electron-with-create-react-app",
+  "name": "morgane-comptability",
+  "productName": "Morgane Comptability app",
   "version": "0.1.0",
   "private": true,
+  "main": "index.js",
   "devDependencies": {
     "electron": "^1.7.9",
+    "electron-packager": "10.1.0",
+    "eslint": "4.14.0",
+    "eslint-config-m6web": "1.1.0",
+    "eslint-config-prettier": "2.9.0",
+    "eslint-plugin-import": "2.8.0",
+    "eslint-plugin-m6web-tools": "^1.2.0",
+    "eslint-plugin-react": "7.5.1",
     "foreman": "^2.0.0",
-    "react-scripts": "0.8.5"
+    "react-scripts": "1.0.17"
   },
   "dependencies": {
+    "babel-eslint": "^8.1.2",
+    "classnames": "^2.2.5",
+    "localforage": "^1.5.5",
+    "lodash": "^4.17.4",
+    "moment": "^2.19.4",
+    "prop-types": "^15.6.0",
     "react": "^16.1.1",
-    "react-dom": "^16.1.1"
+    "react-bootstrap": "^0.31.5",
+    "react-dom": "^16.1.1",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.2.0",
+    "uuid": "^3.1.0"
   },
   "homepage": "./",
   "main": "src/electron-starter.js",
@@ -19,6 +40,10 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "electron": "electron .",
-    "dev": "nf start -p 3000"
+    "dev": "nf start -p 3000",
+    "lint": "eslint src/",
+    "format": " prettier-eslint -- --write 'src/**/*.js'",
+    "window":
+      "electron-packager . morgane-comptability --overwrite --asar=true --platform=win32 --arch=ia32 --icon=icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Morgane Comptability\""
   }
 }

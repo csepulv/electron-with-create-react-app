@@ -1,0 +1,14 @@
+  {
+    "extends": "plugin:m6web-tools/m6web",
+    "plugins": [
+      "m6web-tools"
+    ],
+    "parser": "babel-eslint",
+    "rules": {
+      "strict": 0
+    },
+    "env": {
+      "browser": true,
+      "jasmine": true
+    }
+  }
