@@ -1,3 +1,10 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
 .App {
   text-align: center;
 }
@@ -19,6 +26,22 @@
   flex-direction: row;
 }
 
+.App-content__list {
+  width: 100%;
+  margin-top: 20px;
+  margin-right: 10px;
+}
+
+.App-content #accountTabs-tab-1,
+.App-content #accountTabs-tab-2 {
+  color: black;
+}
+
+.App-content .active #accountTabs-tab-1,
+.App-content .active #accountTabs-tab-2 {
+  color: #9f8f75;
+}
+
 .App-intro {
   font-size: large;
 }
@@ -30,4 +53,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.icons {
+  width: 15px;
+  height: 15px;
 }

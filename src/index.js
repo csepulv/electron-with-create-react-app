@@ -10,7 +10,6 @@ import App from './App';
 
 import localStorage from './redux/middlewares/localStorage.middleware';
 
-import './index.css';
 // eslint-disable-next-line
 const reduxDebugger = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 

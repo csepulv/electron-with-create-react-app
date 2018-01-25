@@ -1,20 +1,16 @@
 import React from 'react';
-import Home from './container/home.connector';
-import SideBar from './container/sideBar.component';
-import Header from './container/header.component';
+
+import Menu from './container/menu/menu.component';
+import AccountContainer from './container/account/account.connector';
 
 import './App.css';
 import './bootstrap.css';
 import './bootstrap-theme.css';
-import './icons.css';
 
 const App = () => (
   <div className="App">
-    <Header />
-    <div className="App-content">
-      <SideBar />
-      <Home />
-    </div>
+    <Menu />
+    <AccountContainer />
   </div>
 );
 

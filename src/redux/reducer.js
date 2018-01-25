@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import consultation from './consultation/consultation.reducers';
-import imposed from './imposed/imposed.reducer';
-import filter from './filter/filter.reducers';
+import charges from './charge/charge.reducers';
+import filtering from './filtering/filtering.reducers';
 
-export default combineReducers({ consultation, imposed, filter });
+export default combineReducers({ consultation, charges, filtering });
