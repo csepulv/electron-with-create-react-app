@@ -1,4 +1,4 @@
-#bootstrap create-react-app and electron
+# bootstrap create-react-app and electron
 
 Code repo for post on freeCodeCamp.
 
