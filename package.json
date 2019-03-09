@@ -27,7 +27,14 @@
     "appId": "com.example.electron-cra",
     "files": [
       "src/**/*"
-    ]
+    ],
+    "extraResources": {
+      "from": "./api/bin/dist/",
+      "to": "api/bin/dist/",
+      "filter": [
+        "**/*"
+      ]
+    }
   },
   "browserslist": [
     ">0.2%",
