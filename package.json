@@ -1,15 +1,16 @@
 {
   "name": "electron-with-create-react-app",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "devDependencies": {
-    "electron": "^1.7.9",
+    "electron": "^4.0.7",
     "foreman": "^2.0.0",
-    "react-scripts": "0.8.5"
+    "react-scripts": "2.1.8"
   },
   "dependencies": {
-    "react": "^16.1.1",
-    "react-dom": "^16.1.1"
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "electron-builder": "^20.38.5"
   },
   "homepage": "./",
   "main": "src/electron-starter.js",
@@ -20,5 +21,11 @@
     "eject": "react-scripts eject",
     "electron": "electron .",
     "dev": "nf start -p 3000"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

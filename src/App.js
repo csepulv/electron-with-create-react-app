@@ -11,7 +11,7 @@ class App extends Component {
           <h2>Welcome to React/Electron</h2>
         </div>
         <p className="App-intro">
-          Hello Electron!
+          Hello Electron
         </p>
       </div>
     );
