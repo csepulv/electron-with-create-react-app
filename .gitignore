@@ -18,3 +18,4 @@ npm-debug.log
 
 dist/**
 osx/
+win/
