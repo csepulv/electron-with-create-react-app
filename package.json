@@ -5,22 +5,29 @@
   "devDependencies": {
     "electron": "^4.0.7",
     "foreman": "^2.0.0",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "electron-builder": "^20.38.5"
   },
   "dependencies": {
     "react": "^16.8.4",
-    "react-dom": "^16.8.4",
-    "electron-builder": "^20.38.5"
+    "react-dom": "^16.8.4"
   },
   "homepage": "./",
   "main": "src/electron-starter.js",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "react-build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "electron": "electron .",
+    "dist": "electron-builder -c.extraMetadata.main=src/electron-starter.js",
     "dev": "nf start -p 3000"
+  },
+  "build": {
+    "appId": "com.example.electron-cra",
+    "files": [
+      "src/**/*"
+    ]
   },
   "browserslist": [
     ">0.2%",

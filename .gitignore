@@ -15,3 +15,5 @@ build
 npm-debug.log
 
 .idea
+
+dist/**
