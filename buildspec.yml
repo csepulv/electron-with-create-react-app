@@ -8,7 +8,7 @@ phases:
         commands:
             - echo build `date`
             - npm run react-build
-            - npm run run dist
+            - npm run dist
     post_build:
         commands:
             - echo test `do nothing`
