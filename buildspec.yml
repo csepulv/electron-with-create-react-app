@@ -1,0 +1,14 @@
+version: 0.2
+phases:
+    pre_build:
+        commands:
+            - echo restore `date`
+            - npm install
+    build:
+        commands:
+            - echo build `date`
+            - npm run react-build
+            - npm run dist
+    post_build:
+        commands:
+            - echo test `do nothing`

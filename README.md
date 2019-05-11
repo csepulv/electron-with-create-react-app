@@ -1,3 +1,5 @@
+<img src="https://codebuild.us-east-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiN3h6cWdxWHE0SnpKSWxuRnRQZmZsSjVwLzhUTjRKVEhLeUJNWUt5b0VURS80YUJZaUFBdExwckNLcWdtWkVBK2lBcUE0eXNScDdGWXAveVhyTndvY01zPSIsIml2UGFyYW1ldGVyU3BlYyI6Imo3ZmtvdDkrQkR6dlZqWTIiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master" />
+
 ## How to build an Electron app using create-react-app. No webpack configuration or “ejecting” necessary.
 
 Code repo for post on [freeCodeCamp](https://medium.freecodecamp.com/building-an-electron-application-with-create-react-app-97945861647c#.ze6c9qin1).
