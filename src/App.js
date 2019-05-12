@@ -41,7 +41,7 @@ class App extends Component {
 
   handleClick() {
     fetch(
-      "http://localhost:5000/api/imposition/6/6/C%3A%5Ctemp%5CA4.bleed3mm.pdf"
+      "http://localhost:5000/api/imposition/6/6/%2FUsers%2Fjoelbellot%2FDocuments%2Fgit%2Ftetefufu%2Fimposition%2Fapi%2Fbin%2Fdist%2Fosx%2Fa4.pdf"
     )
       .then(response => response.json())
       .then(data => console.log(data));
